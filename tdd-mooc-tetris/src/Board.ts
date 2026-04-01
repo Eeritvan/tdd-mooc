@@ -20,7 +20,7 @@ export class Board {
   }
 
   drop(shape: string) {
-    if (this.dropping === null) {
+    if (!this.dropping) {
       this.dropping = shape
       this.position = { x: 1, y: 0 }
       return
@@ -32,5 +32,9 @@ export class Board {
     if (this.position) {
       this.position.y = this.position.y + 1
     }
+  }
+
+  hasFalling() {
+    return true
   }
 }
