@@ -2,13 +2,13 @@ export class Board {
   width: number;
   height: number;
   private dropping2: boolean;
-  private dropping: string | null;
+  private shape: string | null;
   private position: { x: number, y: number } | null;
 
   constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
-    this.dropping = null;
+    this.shape = null;
     this.dropping2 = false;
     this.position = null;
   }
@@ -16,14 +16,14 @@ export class Board {
   toString() {
     const board = Array.from({ length: this.height }, () => Array(this.width).fill("."));
     if (this.position) {
-      board[this.position.y][this.position.x] = this.dropping
+      board[this.position.y][this.position.x] = this.shape
     }
     return board.map((x) => x.join("")).join("\n") + "\n"
   }
 
   drop(shape: string) {
-    if (!this.dropping) {
-      this.dropping = shape
+    if (!this.dropping2) {
+      this.shape = shape
       this.dropping2 = true
       this.position = { x: 1, y: 0 }
       return
