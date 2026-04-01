@@ -71,6 +71,6 @@ export class Board {
   }
 
   hasFalling() {
-    return this.dropping
+    return this.activeBlock !== null
   }
 }
