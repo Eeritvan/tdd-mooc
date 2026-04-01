@@ -43,6 +43,18 @@ export class Board {
 
   tick() {
     if (this.position) {
+      const nextPos = this.position.y + 1
+      for (const block of this.blocks) {
+        if (block?.position.y === nextPos) {
+          this.dropping = false
+          const newBlock: Block = {
+            position: { x: this.position.x, y: this.position.y },
+            shape: this.shape!
+          }
+          this.blocks.push(newBlock)
+          return
+        }
+      }
       if (this.position.y === this.height - 1) {
         this.dropping = false
         const newBlock: Block = {
@@ -52,7 +64,7 @@ export class Board {
         this.blocks.push(newBlock)
         return
       }
-      this.position.y = this.position.y + 1
+      this.position.y = nextPos
     }
   }
 
