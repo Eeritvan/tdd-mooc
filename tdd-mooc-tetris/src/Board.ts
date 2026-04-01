@@ -6,7 +6,6 @@ interface Block {
 export class Board {
   width: number;
   height: number;
-  private dropping: boolean;
   private shape: string | null;
   private position: { x: number, y: number } | null;
   private blocks: [Block?];
@@ -17,7 +16,6 @@ export class Board {
     this.width = width;
     this.height = height;
     this.shape = null;
-    this.dropping = false;
     this.position = null;
     this.blocks = [];
     this.activeBlock = null;
@@ -32,9 +30,8 @@ export class Board {
   }
 
   drop(shape: string) {
-    if (!this.dropping) {
+    if (!this.activeBlock) {
       this.shape = shape
-      this.dropping = true
       this.position = { x: 1, y: 0 }
       this.activeBlock = { position: { x: 1, y: 0 }, shape };
       return
@@ -43,7 +40,6 @@ export class Board {
   }
 
   private placeBlock() {
-    this.dropping = false
     const newBlock: Block = {
       position: { x: this.position.x, y: this.position.y },
       shape: this.shape!
