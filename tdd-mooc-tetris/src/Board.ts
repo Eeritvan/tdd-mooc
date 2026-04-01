@@ -57,13 +57,11 @@ export class Board {
     if (this.position) {
       const nextPos = this.position.y + 1
       const nextPos2 = this.activeBlock.position.y + 1
-      for (const block of this.blocks) {
-        if (block?.position.y === nextPos) {
-          this.placeBlock()
-          return
-        }
+      if (this.activeBlock.position.y === this.height - 1) {
+        this.placeBlock()
+        return
       }
-      if (this.position.y === this.height - 1) {
+      if (this.grid2[this.activeBlock?.position.y + 1][this.activeBlock?.position.x] !== ".") {
         this.placeBlock()
         return
       }
