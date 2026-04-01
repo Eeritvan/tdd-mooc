@@ -60,12 +60,7 @@ export class Board {
         }
       }
       if (this.position.y === this.height - 1) {
-        this.dropping = false
-        const newBlock: Block = {
-          position: { x: this.position.x, y: this.position.y },
-          shape: this.shape!
-        }
-        this.blocks.push(newBlock)
+        this.placeBlock()
         return
       }
       this.position.y = nextPos
