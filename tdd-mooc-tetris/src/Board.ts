@@ -41,17 +41,21 @@ export class Board {
     throw("already falling")
   }
 
+  private placeBlock() {
+    this.dropping = false
+    const newBlock: Block = {
+      position: { x: this.position.x, y: this.position.y },
+      shape: this.shape!
+    }
+    this.blocks.push(newBlock)
+  }
+
   tick() {
     if (this.position) {
       const nextPos = this.position.y + 1
       for (const block of this.blocks) {
         if (block?.position.y === nextPos) {
-          this.dropping = false
-          const newBlock: Block = {
-            position: { x: this.position.x, y: this.position.y },
-            shape: this.shape!
-          }
-          this.blocks.push(newBlock)
+          this.placeBlock()
           return
         }
       }
