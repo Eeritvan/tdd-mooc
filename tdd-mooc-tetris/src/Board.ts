@@ -31,8 +31,6 @@ export class Board {
 
   drop(shape: string) {
     if (!this.activeBlock) {
-      this.shape = shape
-      this.position = { x: 1, y: 0 }
       this.activeBlock = { position: { x: 1, y: 0 }, shape };
       return
     }
@@ -40,17 +38,12 @@ export class Board {
   }
 
   private placeBlock() {
-    const newBlock: Block = {
-      position: { x: this.position.x, y: this.position.y },
-      shape: this.shape!
-    }
     this.grid2[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
     this.activeBlock = null
-    this.blocks.push(newBlock)
   }
 
   tick() {
-    if (this.position) {
+    if (this.activeBlock) {
       const nextPos = this.activeBlock.position.y + 1
       if (this.activeBlock.position.y === this.height - 1) {
         this.placeBlock()
