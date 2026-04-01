@@ -1,19 +1,18 @@
 interface Block {
-  position: { x: number, y: number };
+  position: { x: number, y: number }
   shape: string
 }
 
 export class Board {
-  width: number;
-  height: number;
-  private activeBlock: Block | null
+  width: number
+  height: number
+  private activeBlock: Block | null = null
   private grid: string[][]
 
   constructor(width: number, height: number) {
-    this.width = width;
-    this.height = height;
-    this.activeBlock = null;
-    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
+    this.width = width
+    this.height = height
+    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."))
   }
 
   toString() {
@@ -25,7 +24,7 @@ export class Board {
 
   drop(shape: string) {
     if (!this.activeBlock) {
-      this.activeBlock = { position: { x: 1, y: 0 }, shape };
+      this.activeBlock = { position: { x: 1, y: 0 }, shape }
       return
     }
     throw("already falling")
