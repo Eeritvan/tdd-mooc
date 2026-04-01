@@ -1,10 +1,10 @@
 import { Assertion } from "chai";
 
-export function normalize(s) {
+export function normalize(s: string) {
   return s.replaceAll(" ", "").trim() + "\n";
 }
 
-Assertion.addMethod("equalShape", function (expected) {
+Assertion.addMethod("equalShape", function (expected: string) {
   const actual = this._obj;
   new Assertion(actual).to.be.a("string");
 
