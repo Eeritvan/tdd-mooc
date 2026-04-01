@@ -10,6 +10,7 @@ export class Board {
   private shape: string | null;
   private position: { x: number, y: number } | null;
   private blocks: [Block?];
+  private activeBlock: Block | null
   private grid: string[][]
 
   constructor(width: number, height: number) {
@@ -19,6 +20,7 @@ export class Board {
     this.dropping = false;
     this.position = null;
     this.blocks = [];
+    this.activeBlock = null;
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
   }
 
