@@ -12,6 +12,7 @@ export class Board {
   private blocks: [Block?];
   private activeBlock: Block | null
   private grid: string[][]
+  private grid2: string[][]
 
   constructor(width: number, height: number) {
     this.width = width;
@@ -22,6 +23,7 @@ export class Board {
     this.blocks = [];
     this.activeBlock = null;
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
+    this.grid2 = Array.from({ length: this.height }, () => Array(this.width).fill("."));
   }
 
   toString() {
@@ -47,11 +49,12 @@ export class Board {
 
   private placeBlock() {
     this.dropping = false
-    this.activeBlock = null
     const newBlock: Block = {
       position: { x: this.position.x, y: this.position.y },
       shape: this.shape!
     }
+    this.grid2[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
+    this.activeBlock = null
     this.blocks.push(newBlock)
   }
 
