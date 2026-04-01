@@ -17,7 +17,8 @@ export class Board {
 
   toString() {
     if (this.activeBlock !== null) {
-      this.grid[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
+      const { x, y } = this.activeBlock.position
+      this.grid[y][x] = this.activeBlock.shape
     }
     return this.grid.map((x) => x.join("")).join("\n") + "\n"
   }
@@ -30,22 +31,24 @@ export class Board {
   }
 
   private placeBlock() {
-    this.grid[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
+    const { x, y } = this.activeBlock.position
+    this.grid[y][x] = this.activeBlock.shape
     this.activeBlock = null
   }
 
   tick() {
     if (this.activeBlock) {
-      const nextPos = this.activeBlock.position.y + 1
-      if (this.activeBlock.position.y === this.height - 1) {
+      const { x, y } = this.activeBlock.position;
+      const nextYPos = y + 1
+      if (nextYPos === this.height) {
         this.placeBlock()
         return
       }
-      if (this.grid[this.activeBlock?.position.y + 1][this.activeBlock?.position.x] !== ".") {
+      if (this.grid[nextYPos][x] !== ".") {
         this.placeBlock()
         return
       }
-      this.activeBlock.position.y = nextPos
+      this.activeBlock.position.y = nextYPos
     }
   }
 
