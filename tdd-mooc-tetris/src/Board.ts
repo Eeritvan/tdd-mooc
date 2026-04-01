@@ -1,9 +1,15 @@
+interface Block {
+  position: { x: number, y: number };
+  shape: string
+}
+
 export class Board {
   width: number;
   height: number;
   private dropping: boolean;
   private shape: string | null;
   private position: { x: number, y: number } | null;
+  private blocks: [Block?];
 
   constructor(width: number, height: number) {
     this.width = width;
@@ -11,6 +17,7 @@ export class Board {
     this.shape = null;
     this.dropping = false;
     this.position = null;
+    this.blocks = [];
   }
 
   toString() {
@@ -35,6 +42,11 @@ export class Board {
     if (this.position) {
       if (this.position.y === this.height - 1) {
         this.dropping = false
+        const newBlock: Block = {
+          position: { x: this.position.x, y: this.position.y },
+          shape: this.shape!
+        }
+        this.blocks.push(newBlock)
         return
       }
       this.position.y = this.position.y + 1
