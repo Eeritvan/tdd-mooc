@@ -27,13 +27,10 @@ export class Board {
   }
 
   toString() {
-    if (this.position) {
-      this.blocks.map(x => {
-        this.grid[x?.position.y][x?.position.x] = x?.shape
-      })
-      this.grid[this.position.y][this.position.x] = this.shape
+    if (this.activeBlock !== null) {
+      this.grid2[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
     }
-    return this.grid.map((x) => x.join("")).join("\n") + "\n"
+    return this.grid2.map((x) => x.join("")).join("\n") + "\n"
   }
 
   drop(shape: string) {
@@ -61,6 +58,7 @@ export class Board {
   tick() {
     if (this.position) {
       const nextPos = this.position.y + 1
+      const nextPos2 = this.activeBlock.position.y + 1
       for (const block of this.blocks) {
         if (block?.position.y === nextPos) {
           this.placeBlock()
@@ -72,6 +70,7 @@ export class Board {
         return
       }
       this.position.y = nextPos
+      this.activeBlock.position.y = nextPos2
     }
   }
 
