@@ -10,6 +10,7 @@ export class Board {
   private shape: string | null;
   private position: { x: number, y: number } | null;
   private blocks: [Block?];
+  private grid: string[][]
 
   constructor(width: number, height: number) {
     this.width = width;
@@ -18,17 +19,17 @@ export class Board {
     this.dropping = false;
     this.position = null;
     this.blocks = [];
+    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
   }
 
   toString() {
-    const board = Array.from({ length: this.height }, () => Array(this.width).fill("."));
     if (this.position) {
       this.blocks.map(x => {
-        board[x?.position.y][x?.position.x] = x?.shape
+        this.grid[x?.position.y][x?.position.x] = x?.shape
       })
-      board[this.position.y][this.position.x] = this.shape
+      this.grid[this.position.y][this.position.x] = this.shape
     }
-    return board.map((x) => x.join("")).join("\n") + "\n"
+    return this.grid.map((x) => x.join("")).join("\n") + "\n"
   }
 
   drop(shape: string) {
