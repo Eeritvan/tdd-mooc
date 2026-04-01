@@ -51,8 +51,7 @@ export class Board {
 
   tick() {
     if (this.position) {
-      const nextPos = this.position.y + 1
-      const nextPos2 = this.activeBlock.position.y + 1
+      const nextPos = this.activeBlock.position.y + 1
       if (this.activeBlock.position.y === this.height - 1) {
         this.placeBlock()
         return
@@ -61,8 +60,7 @@ export class Board {
         this.placeBlock()
         return
       }
-      this.position.y = nextPos
-      this.activeBlock.position.y = nextPos2
+      this.activeBlock.position.y = nextPos
     }
   }
 
