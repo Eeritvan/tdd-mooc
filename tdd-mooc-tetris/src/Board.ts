@@ -7,20 +7,20 @@ export class Board {
   width: number;
   height: number;
   private activeBlock: Block | null
-  private grid2: string[][]
+  private grid: string[][]
 
   constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
     this.activeBlock = null;
-    this.grid2 = Array.from({ length: this.height }, () => Array(this.width).fill("."));
+    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
   }
 
   toString() {
     if (this.activeBlock !== null) {
-      this.grid2[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
+      this.grid[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
     }
-    return this.grid2.map((x) => x.join("")).join("\n") + "\n"
+    return this.grid.map((x) => x.join("")).join("\n") + "\n"
   }
 
   drop(shape: string) {
@@ -32,7 +32,7 @@ export class Board {
   }
 
   private placeBlock() {
-    this.grid2[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
+    this.grid[this.activeBlock.position.y][this.activeBlock.position.x] = this.activeBlock.shape
     this.activeBlock = null
   }
 
@@ -43,7 +43,7 @@ export class Board {
         this.placeBlock()
         return
       }
-      if (this.grid2[this.activeBlock?.position.y + 1][this.activeBlock?.position.x] !== ".") {
+      if (this.grid[this.activeBlock?.position.y + 1][this.activeBlock?.position.x] !== ".") {
         this.placeBlock()
         return
       }
