@@ -23,6 +23,9 @@ export class Board {
   toString() {
     const board = Array.from({ length: this.height }, () => Array(this.width).fill("."));
     if (this.position) {
+      this.blocks.map(x => {
+        board[x?.position.y][x?.position.x] = x?.shape
+      })
       board[this.position.y][this.position.x] = this.shape
     }
     return board.map((x) => x.join("")).join("\n") + "\n"
