@@ -32,6 +32,7 @@ describe("Falling blocks", () => {
     // test("it moves down one row per tick", () => {
     //   board.tick();
 
+    //   console.log(board.toString())
     //   expect(board.toString()).to.equalShape(
     //     `...
     //      .X.
