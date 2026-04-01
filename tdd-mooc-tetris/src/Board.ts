@@ -39,6 +39,7 @@ export class Board {
       this.shape = shape
       this.dropping = true
       this.position = { x: 1, y: 0 }
+      this.activeBlock = { position: { x: 1, y: 0 }, shape };
       return
     }
     throw("already falling")
@@ -46,6 +47,7 @@ export class Board {
 
   private placeBlock() {
     this.dropping = false
+    this.activeBlock = null
     const newBlock: Block = {
       position: { x: this.position.x, y: this.position.y },
       shape: this.shape!
