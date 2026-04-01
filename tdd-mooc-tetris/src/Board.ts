@@ -20,8 +20,12 @@ export class Board {
   }
 
   drop(shape: string) {
-    this.dropping = shape
-    this.position = { x: 1, y: 0 }
+    if (this.dropping === null) {
+      this.dropping = shape
+      this.position = { x: 1, y: 0 }
+      return
+    }
+    throw("already falling")
   }
 
   tick() {
