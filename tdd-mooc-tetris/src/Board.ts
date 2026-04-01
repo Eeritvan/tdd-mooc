@@ -23,4 +23,10 @@ export class Board {
     this.dropping = shape
     this.position = { x: 1, y: 0 }
   }
+
+  tick() {
+    if (this.position) {
+      this.position.y = this.position.y + 1
+    }
+  }
 }
