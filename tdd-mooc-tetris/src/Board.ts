@@ -23,11 +23,10 @@ export class Board {
   }
 
   drop(shape: string) {
-    if (!this.activeBlock) {
-      this.activeBlock = { position: { x: 1, y: 0 }, shape }
-      return
+    if (this.activeBlock) {
+      throw("already falling")
     }
-    throw("already falling")
+    this.activeBlock = { position: { x: 1, y: 0 }, shape }
   }
 
   private placeBlock() {
