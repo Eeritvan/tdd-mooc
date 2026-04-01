@@ -11,7 +11,6 @@ export class Board {
   private position: { x: number, y: number } | null;
   private blocks: [Block?];
   private activeBlock: Block | null
-  private grid: string[][]
   private grid2: string[][]
 
   constructor(width: number, height: number) {
@@ -22,7 +21,6 @@ export class Board {
     this.position = null;
     this.blocks = [];
     this.activeBlock = null;
-    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
     this.grid2 = Array.from({ length: this.height }, () => Array(this.width).fill("."));
   }
 
