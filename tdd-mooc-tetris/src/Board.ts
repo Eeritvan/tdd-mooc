@@ -1,6 +1,7 @@
 export class Board {
   width: number;
   height: number;
+  private dropping2: boolean;
   private dropping: string | null;
   private position: { x: number, y: number } | null;
 
@@ -8,6 +9,7 @@ export class Board {
     this.width = width;
     this.height = height;
     this.dropping = null;
+    this.dropping2 = false;
     this.position = null;
   }
 
@@ -22,6 +24,7 @@ export class Board {
   drop(shape: string) {
     if (!this.dropping) {
       this.dropping = shape
+      this.dropping2 = true
       this.position = { x: 1, y: 0 }
       return
     }
@@ -30,11 +33,15 @@ export class Board {
 
   tick() {
     if (this.position) {
+      if (this.position.y === this.height - 1) {
+        this.dropping2 = false
+        return
+      }
       this.position.y = this.position.y + 1
     }
   }
 
   hasFalling() {
-    return this.dropping !== null
+    return this.dropping2
   }
 }
