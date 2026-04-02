@@ -28,4 +28,7 @@ export class RotatingShape {
 
     return this.formatGrid(result)
   }
+
+  rotateLeft(): RotatingShape {
+  }
 }
