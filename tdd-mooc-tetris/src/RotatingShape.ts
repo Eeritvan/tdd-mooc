@@ -18,7 +18,7 @@ export class RotatingShape {
     return this.formatGrid(this.grid)
   }
 
-  rotateRight(): RotatingShape {
+  rotateRight() {
     const result = Array.from({ length: this.grid.length }, () => Array(this.grid[0].length).fill("."))
     for (let y = 0; y < this.grid.length; y++) {
       for (let x = 0; x < this.grid[y].length; x++) {
@@ -29,7 +29,7 @@ export class RotatingShape {
     return this.formatGrid(result)
   }
 
-  rotateLeft(): RotatingShape {
+  rotateLeft() {
     const result = Array.from({ length: this.grid.length }, () => Array(this.grid[0].length).fill("."))
     for (let y = 0; y < this.grid.length; y++) {
       for (let x = 0; x < this.grid[y].length; x++) {
