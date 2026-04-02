@@ -18,20 +18,17 @@ export class RotatingShape {
     return this.formatGrid(this.grid)
   }
 
+  // https://stackoverflow.com/questions/15170942/how-to-rotate-a-matrix-in-an-array-in-javascript
   rotateRight() {
     return this.formatGrid(
       this.grid[0].map((_, i) => this.grid.map(row => row[i]).reverse())
     )
   }
 
+  // https://stackoverflow.com/questions/15170942/how-to-rotate-a-matrix-in-an-array-in-javascript
   rotateLeft() {
-    const result = Array.from({ length: this.grid.length }, () => Array(this.grid[0].length).fill("."))
-    for (let y = 0; y < this.grid.length; y++) {
-      for (let x = 0; x < this.grid[y].length; x++) {
-        result[this.grid.length - 1 - x][y] = this.grid[y][x]
-      }
-    }
-
-    return this.formatGrid(result)
+    return this.formatGrid(
+      this.grid[0].map((_, i) => this.grid.map(row => row[row.length-1-i]))
+    )
   }
 }
