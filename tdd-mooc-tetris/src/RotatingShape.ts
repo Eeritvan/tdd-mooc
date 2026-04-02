@@ -17,10 +17,11 @@ export class RotatingShape {
   rotateRight() {
     const result = Array.from({ length: this.grid.length }, () => Array(this.grid.length).fill("."))
 
-    for (let i = 0; i < this.grid.length; i++) {
-      for (let j = 0; j < this.grid[i].length; j++) {
+    for (let y = 0; y < this.grid.length; y++) {
+      for (let x = 0; x < this.grid[y].length; x++) {
+        result[x][this.grid.length - 1 - y] = this.grid[y][x]
       }
     }
-    return result
+    return result.map(x => x.join("")).join("\n") + "\n"
   }
 }
