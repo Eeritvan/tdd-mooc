@@ -15,13 +15,8 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    const result = Array.from({ length: this.grid.length }, () => Array(this.grid.length).fill("."))
-
-    for (let y = 0; y < this.grid.length; y++) {
-      for (let x = 0; x < this.grid[y].length; x++) {
-        result[x][this.grid.length - 1 - y] = this.grid[y][x]
-      }
-    }
-    return result.map(x => x.join("")).join("\n") + "\n"
+    return this.grid
+      .map((_, i) => this.grid.map(row => row[i]).reverse())
+      .map(x => x.join("")).join("\n") + "\n"
   }
 }
