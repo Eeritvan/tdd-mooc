@@ -18,8 +18,14 @@ export class RotatingShape {
     return this.formatGrid(this.grid)
   }
 
-  rotateRight() {
-    return this.formatGrid(this.grid
-      .map((_, i) => this.grid.map(row => row[i]).reverse()))
+  rotateRight(): RotatingShape {
+    const result = Array.from({ length: this.grid.length }, () => Array(this.grid[0].length).fill("."))
+    for (let y = 0; y < this.grid.length; y++) {
+      for (let x = 0; x < this.grid[y].length; x++) {
+        result[x][this.grid.length - 1 - y] = this.grid[y][x]
+      }
+    }
+
+    return this.formatGrid(result)
   }
 }
