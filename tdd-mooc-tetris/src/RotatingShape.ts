@@ -10,13 +10,16 @@ export class RotatingShape {
     return new RotatingShape(grid)
   }
 
+  private formatGrid(str: string[][]) {
+    return str.map(x => x.join("")).join("\n") + "\n"
+  }
+
   toString() {
-    return this.grid.map(x => x.join("")).join("\n") + "\n"
+    return this.formatGrid(this.grid)
   }
 
   rotateRight() {
-    return this.grid
-      .map((_, i) => this.grid.map(row => row[i]).reverse())
-      .map(x => x.join("")).join("\n") + "\n"
+    return this.formatGrid(this.grid
+      .map((_, i) => this.grid.map(row => row[i]).reverse()))
   }
 }
