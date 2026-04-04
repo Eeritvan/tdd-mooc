@@ -1,3 +1,5 @@
+import { RotatingShape } from "./RotatingShape";
+
 export class Tetromino {
   private grid: string[][]
 
@@ -24,5 +26,8 @@ export class Tetromino {
   }
 
   rotateRight() {
+    const str = this.grid.map(x => x.join("")).join("\n") + "\n"
+    const testing = RotatingShape.fromString(str)
+    return testing.rotateRight()
   }
 }
