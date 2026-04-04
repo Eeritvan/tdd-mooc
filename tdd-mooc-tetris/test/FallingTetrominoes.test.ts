@@ -3,14 +3,14 @@ import { expect } from "chai";
 import { Board } from "../src/Board";
 import { Tetromino } from "../src/Tetromino";
 
-function fallToBottom(board) {
+function fallToBottom(board: Board) {
   for (let i = 0; i < 10; i++) {
     board.tick();
   }
 }
 
 describe("Falling tetrominoes", () => {
-  let board;
+  let board: Board;
   beforeEach(() => {
     board = new Board(10, 6);
   });
