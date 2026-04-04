@@ -30,4 +30,10 @@ export class Tetromino {
     const testing = RotatingShape.fromString(str)
     return testing.rotateRight()
   }
+
+  rotateLeft() {
+    const str = this.grid.map(x => x.join("")).join("\n") + "\n"
+    const testing = RotatingShape.fromString(str)
+    return testing.rotateLeft()
+  }
 }
