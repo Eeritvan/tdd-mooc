@@ -25,10 +25,10 @@ export class Tetromino {
   }
 
   rotateRight() {
-    return this.shape.rotateRight()
+    return new Tetromino(this.shape.rotateRight())
   }
 
   rotateLeft() {
-    return this.shape.rotateLeft()
+    return new Tetromino(this.shape.rotateLeft())
   }
 }
