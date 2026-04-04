@@ -30,6 +30,14 @@ export class Tetromino {
     );
   }
 
+  static get O_SHAPE(): Tetromino {
+    return Tetromino.createGrid(
+      `.OO
+       .OO
+       ...`
+    );
+  }
+
   toString() {
     return this.shape.toString()
   }
