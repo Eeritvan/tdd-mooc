@@ -20,6 +20,16 @@ export class Tetromino {
     );
   }
 
+  static get I_SHAPE(): Tetromino {
+    return Tetromino.createGrid(
+      `.....
+       .....
+       IIII.
+       .....
+       .....`
+    );
+  }
+
   toString() {
     return this.shape.toString()
   }
