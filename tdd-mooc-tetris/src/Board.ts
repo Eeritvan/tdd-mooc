@@ -1,5 +1,10 @@
 import { Tetromino } from "./Tetromino"
 
+export interface Block extends Tetromino {
+  width: number
+  height: number
+}
+
 interface ActiveBlock {
   position: { x: number, y: number }
   shape: string
@@ -9,6 +14,7 @@ export class Board {
   width: number
   height: number
   private activeBlock: ActiveBlock | null = null
+  private activeBlock2: ActiveBlock | null = null
   private grid: string[][]
 
   constructor(width: number, height: number) {
