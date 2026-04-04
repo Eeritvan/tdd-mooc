@@ -1,15 +1,15 @@
 import { RotatingShape } from "./RotatingShape";
 
 export class Tetromino {
-  private shape: string[][]
+  private shape: RotatingShape
 
-  constructor(shape: string[][]) {
+  constructor(shape: RotatingShape) {
     this.shape = shape
   }
 
   static createGrid(shape: string) {
-    const newshape = shape.split("\n").map(x => x.trim().split(""))
-    return new Tetromino(newshape)
+    const newShape = RotatingShape.fromString(shape)
+    return new Tetromino(newShape)
   }
 
   static get T_SHAPE(): Tetromino {
@@ -21,18 +21,14 @@ export class Tetromino {
   }
 
   toString() {
-    return this.shape.map(x => x.join("")).join("\n") + "\n"
+    return this.shape.toString()
   }
 
   rotateRight() {
-    const str = this.shape.map(x => x.join("")).join("\n") + "\n"
-    const testing = RotatingShape.fromString(str)
-    return testing.rotateRight()
+    return this.shape.rotateRight()
   }
 
   rotateLeft() {
-    const str = this.shape.map(x => x.join("")).join("\n") + "\n"
-    const testing = RotatingShape.fromString(str)
-    return testing.rotateLeft()
+    return this.shape.rotateLeft()
   }
 }
