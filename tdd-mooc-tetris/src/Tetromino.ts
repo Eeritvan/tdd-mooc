@@ -22,4 +22,7 @@ export class Tetromino {
   toString() {
     return this.grid.map(x => x.join("")).join("\n") + "\n"
   }
+
+  rotateRight() {
+  }
 }
