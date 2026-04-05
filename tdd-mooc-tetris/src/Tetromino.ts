@@ -49,4 +49,8 @@ export class Tetromino {
   rotateLeft() {
     return new Tetromino(this.shape.rotateLeft())
   }
+
+  getGrid() {
+    return this.shape.getGrid()
+  }
 }
