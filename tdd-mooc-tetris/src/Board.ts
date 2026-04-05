@@ -78,6 +78,13 @@ export class Board {
   tick() {
     if (this.activeBlock) {
       const { x, y } = this.activeBlock.position;
+
+      const test = this.activeBlock.shape
+        .toString()
+        .split("\n")
+        .filter(x => x.length !== 0)
+        .map(x => x.split(""))
+
       const nextYPos = y + 1
       if (nextYPos === this.height) {
         this.placeBlock()
