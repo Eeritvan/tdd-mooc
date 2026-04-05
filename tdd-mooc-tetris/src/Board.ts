@@ -41,7 +41,12 @@ export class Board {
     if (this.activeBlock) {
       throw("already falling")
     }
-    this.activeBlock = { position: { x: 1, y: 0 }, shape }
+    this.activeBlock = {
+      position: { x: 1, y: 0 },
+      width: 1,
+      height: 1,
+      shape
+    }
   }
 
   private placeBlock() {
