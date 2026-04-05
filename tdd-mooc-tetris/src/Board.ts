@@ -19,6 +19,10 @@ export class Board {
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."))
   }
 
+  private static toTetromino(s: string | Tetromino) {
+    return typeof s === "string" ? Tetromino.createGrid(s) : s
+  }
+
   toString() {
     const display = this.grid.map(row => row.slice())
 
@@ -44,9 +48,10 @@ export class Board {
     if (this.activeBlock) {
       throw("already falling")
     }
-    const size = typeof shape !== "string"
-      ? shape.toString().split("\n").filter(x => x.length !== 0).length
-      : 1
+    const tetromino = Board.toTetromino(shape)
+
+    const size = tetromino.toString().split("\n").filter(x => x.length !== 0).length
+
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
       position: { x: test, y: 0 },
