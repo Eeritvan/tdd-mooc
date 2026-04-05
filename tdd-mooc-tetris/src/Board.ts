@@ -28,6 +28,7 @@ export class Board {
 
     if (this.activeBlock !== null) {
       const test = this.activeBlock.shape.getGrid()
+
       for (let y = 0; y < this.activeBlock.height; y++) {
         for (let x = 0; x < this.activeBlock.width; x++) {
           if (test[y][x] === ".") {
@@ -46,7 +47,10 @@ export class Board {
     }
     const newShape = Board.toTetromino(shape)
 
-    const size = newShape.toString().split("\n").filter(x => x.length !== 0).length
+    const size = newShape
+      .toString()
+      .split("\n")
+      .filter(x => x.length !== 0).length
 
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
