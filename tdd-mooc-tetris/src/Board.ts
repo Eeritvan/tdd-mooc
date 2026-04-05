@@ -20,6 +20,8 @@ export class Board {
   }
 
   toString() {
+    const display = this.grid.map(row => row.slice())
+
     if (this.activeBlock !== null) {
       const test = this.activeBlock.shape
         .toString()
@@ -28,11 +30,11 @@ export class Board {
         .map(x => x.split(""))
       for (let y = 0; y < this.activeBlock.height; y++) {
         for (let x = 0; x < this.activeBlock.width; x++) {
-          this.grid[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = test[y][x]
+          display[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = test[y][x]
         }
       }
     }
-    return this.grid.map((x) => x.join("")).join("\n") + "\n"
+    return display.map((x) => x.join("")).join("\n") + "\n"
   }
 
   drop(shape: string | Tetromino) {

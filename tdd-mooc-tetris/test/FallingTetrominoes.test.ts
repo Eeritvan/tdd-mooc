@@ -6,6 +6,7 @@ import { Tetromino } from "../src/Tetromino";
 function fallToBottom(board: Board) {
   for (let i = 0; i < 10; i++) {
     board.tick();
+    console.log(i, board.toString())
   }
 }
 
