@@ -4,7 +4,7 @@ interface ActiveBlock {
   position: { x: number, y: number }
   width: number
   height: number
-  shape: string
+  shape: string | Tetromino
 }
 
 export class Board {
@@ -27,7 +27,7 @@ export class Board {
     return this.grid.map((x) => x.join("")).join("\n") + "\n"
   }
 
-  drop(shape: string) {
+  drop(shape: string | Tetromino) {
     if (this.activeBlock) {
       throw("already falling")
     }
