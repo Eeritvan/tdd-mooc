@@ -19,10 +19,6 @@ export class Board {
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."))
   }
 
-  private static toTetromino(shape: string | Tetromino) {
-    return typeof shape === "string" ? Tetromino.createGrid(shape) : shape
-  }
-
   toString() {
     const display = this.grid.map(row => row.slice())
 
@@ -42,15 +38,13 @@ export class Board {
   }
 
   drop(shape: string | Tetromino) {
-    if (this.activeBlock) {
-      throw("already falling")
-    }
-    const newShape = Board.toTetromino(shape)
+    if (this.activeBlock) throw ("already falling")
 
-    const size = newShape
-      .toString()
-      .split("\n")
-      .filter(x => x.length !== 0).length
+    const newShape = typeof shape === "string"
+      ? Tetromino.createGrid(shape)
+      : shape
+
+    const size = newShape.getGrid().length
 
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
@@ -62,6 +56,8 @@ export class Board {
   }
 
   private placeBlock() {
+    if (!this.activeBlock) return
+
     const { width, height, position: { x: baseX, y: baseY }, shape } = this.activeBlock
 
     const test = shape.getGrid()
@@ -77,39 +73,34 @@ export class Board {
   }
 
   tick() {
-    if (this.activeBlock) {
-      const { height, width, position: { x, y }, shape } = this.activeBlock;
+    if (!this.activeBlock) return
 
-      const test = shape
-        .toString()
-        .split("\n")
-        .filter(x => x.length !== 0)
-        .map(x => x.split(""))
+    const { height, width, position: { x, y }, shape } = this.activeBlock;
+    const test = shape.getGrid()
+    const nextYPos = y + 1
 
-      const nextYPos = y + 1
+    for (let y2 = 0; y2 < height; y2++) {
+      for (let x2 = 0; x2 < width; x2++) {
+        if (test[y2][x2] === ".") {
+          continue
+        }
 
-      for (let y2 = 0; y2 < height; y2++) {
-        for (let x2 = 0; x2 < width; x2++) {
-          if (test[y2][x2] === ".") {
-            continue
-          }
+        const newX = x + x2
+        const newY = nextYPos + y2
 
-          const newX = x + x2
-          const newY = nextYPos + y2
+        if (newY >= this.height) {
+          this.placeBlock()
+          return
+        }
 
-          if (newY >= this.height) {
-            this.placeBlock()
-            return
-          }
-
-          if (this.grid[newY][newX] !== ".") {
-            this.placeBlock()
-            return
-          }
+        if (this.grid[newY][newX] !== ".") {
+          this.placeBlock()
+          return
         }
       }
-      this.activeBlock.position.y = nextYPos
     }
+
+    this.activeBlock.position.y = nextYPos
   }
 
   hasFalling() {
