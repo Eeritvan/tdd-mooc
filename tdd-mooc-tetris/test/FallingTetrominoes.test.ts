@@ -29,6 +29,24 @@ describe("Falling tetrominoes", () => {
     );
   });
 
+  test("ticker", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.tick()
+    console.log(board.toString())
+
+    board.tick()
+    console.log(board.toString())
+
+    board.tick()
+    console.log(board.toString())
+
+    board.tick()
+    console.log(board.toString())
+
+    // board.tick()
+    // console.log(board.toString())
+  });
+
   test.skip("stop when they hit the bottom", () => {
     board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
