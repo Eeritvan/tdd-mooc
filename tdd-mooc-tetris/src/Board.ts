@@ -8,8 +8,8 @@ interface ActiveBlock {
 }
 
 export class Board {
-  width: number
-  height: number
+  private width: number
+  private height: number
   private activeBlock: ActiveBlock | null = null
   private grid: string[][]
 
@@ -31,10 +31,14 @@ export class Board {
     if (this.activeBlock) {
       throw("already falling")
     }
+    const size = typeof shape !== "string"
+      ? shape.toString().split("\n").length - 1
+      : 0
+    const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
-      position: { x: 1, y: 0 },
-      width: 1,
-      height: 1,
+      position: { x: test, y: 0 },
+      width: size,
+      height: size,
       shape
     }
   }
