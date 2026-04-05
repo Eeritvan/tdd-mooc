@@ -21,8 +21,16 @@ export class Board {
 
   toString() {
     if (this.activeBlock !== null) {
-      const { x, y } = this.activeBlock.position
-      this.grid[y][x] = this.activeBlock.shape
+      const test = this.activeBlock.shape
+        .toString()
+        .split("\n")
+        .filter(x => x.length !== 0)
+        .map(x => x.split(""))
+      for (let y = 0; y < this.activeBlock.height; y++) {
+        for (let x = 0; x < this.activeBlock.width; x++) {
+          this.grid[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = test[y][x]
+        }
+      }
     }
     return this.grid.map((x) => x.join("")).join("\n") + "\n"
   }
@@ -33,7 +41,7 @@ export class Board {
     }
     const size = typeof shape !== "string"
       ? shape.toString().split("\n").length - 1
-      : 0
+      : 1
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
       position: { x: test, y: 0 },
