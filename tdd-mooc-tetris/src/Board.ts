@@ -62,15 +62,11 @@ export class Board {
   }
 
   private placeBlock() {
-    const { x: baseX, y: baseY } = this.activeBlock.position
+    const { width, height, position: { x: baseX, y: baseY }, shape } = this.activeBlock
 
-    const test = this.activeBlock.shape
-      .toString()
-      .split("\n")
-      .filter(x => x.length !== 0)
-      .map(x => x.split(""))
-    for (let y = 0; y < this.activeBlock.height; y++) {
-      for (let x = 0; x < this.activeBlock.width; x++) {
+    const test = shape.getGrid()
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
         if (test[y][x] === ".") {
           continue
         }
