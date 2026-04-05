@@ -48,16 +48,16 @@ export class Board {
     if (this.activeBlock) {
       throw("already falling")
     }
-    const tetromino = Board.toTetromino(shape)
+    const newShape = Board.toTetromino(shape)
 
-    const size = tetromino.toString().split("\n").filter(x => x.length !== 0).length
+    const size = newShape.toString().split("\n").filter(x => x.length !== 0).length
 
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
       position: { x: test, y: 0 },
       width: size,
       height: size,
-      shape
+      shape: newShape
     }
   }
 
