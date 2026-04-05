@@ -7,6 +7,8 @@ export interface Shape extends Tetromino {
 
 interface ActiveBlock {
   position: { x: number, y: number }
+  width: number
+  height: number
   shape: string
 }
 
@@ -19,7 +21,6 @@ export class Board {
   width: number
   height: number
   private activeBlock: ActiveBlock | null = null
-  private activeBlock2: ActiveBlock2 | null = null
   private grid: string[][]
 
   constructor(width: number, height: number) {
