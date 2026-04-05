@@ -23,14 +23,14 @@ export class Board {
     const display = this.grid.map(row => row.slice())
 
     if (this.activeBlock !== null) {
-      const test = this.activeBlock.shape.getGrid()
+      const activeShape = this.activeBlock.shape.getGrid()
 
       for (let y = 0; y < this.activeBlock.height; y++) {
         for (let x = 0; x < this.activeBlock.width; x++) {
-          if (test[y][x] === ".") {
+          if (activeShape[y][x] === ".") {
             continue
           }
-          display[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = test[y][x]
+          display[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = activeShape[y][x]
         }
       }
     }
@@ -46,9 +46,9 @@ export class Board {
 
     const size = newShape.getGrid().length
 
-    const test = Math.floor((this.width - size) / 2);
+    const middle = Math.floor((this.width - size) / 2);
     this.activeBlock = {
-      position: { x: test, y: 0 },
+      position: { x: middle, y: 0 },
       width: size,
       height: size,
       shape: newShape
@@ -60,13 +60,13 @@ export class Board {
 
     const { width, height, position: { x: baseX, y: baseY }, shape } = this.activeBlock
 
-    const test = shape.getGrid()
+    const activeShape = shape.getGrid()
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        if (test[y][x] === ".") {
+        if (activeShape[y][x] === ".") {
           continue
         }
-        this.grid[y + baseY][x + baseX] = test[y][x]
+        this.grid[y + baseY][x + baseX] = activeShape[y][x]
       }
     }
     this.activeBlock = null
@@ -75,17 +75,17 @@ export class Board {
   tick() {
     if (!this.activeBlock) return
 
-    const { height, width, position: { x, y }, shape } = this.activeBlock;
-    const test = shape.getGrid()
-    const nextYPos = y + 1
+    const { height, width, position: { x: baseX, y: baseY }, shape } = this.activeBlock;
+    const activeShape = shape.getGrid()
+    const nextYPos = baseY + 1
 
     for (let y2 = 0; y2 < height; y2++) {
       for (let x2 = 0; x2 < width; x2++) {
-        if (test[y2][x2] === ".") {
+        if (activeShape[y2][x2] === ".") {
           continue
         }
 
-        const newX = x + x2
+        const newX = baseX + x2
         const newY = nextYPos + y2
 
         if (newY >= this.height) {
