@@ -1,10 +1,5 @@
 import { Tetromino } from "./Tetromino"
 
-export interface Shape extends Tetromino {
-  width: number
-  height: number
-}
-
 interface ActiveBlock {
   position: { x: number, y: number }
   width: number
