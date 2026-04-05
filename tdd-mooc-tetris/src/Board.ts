@@ -86,13 +86,26 @@ export class Board {
         .map(x => x.split(""))
 
       const nextYPos = y + 1
-      if (nextYPos === this.height) {
-        this.placeBlock()
-        return
-      }
-      if (this.grid[nextYPos][x] !== ".") {
-        this.placeBlock()
-        return
+
+      for (let y2 = 0; y2 < this.activeBlock.height; y2++) {
+        for (let x2 = 0; x2 < this.activeBlock.width; x2++) {
+          if (test[y2][x2] === ".") {
+            continue
+          }
+
+          const newX = x + x2
+          const newY = nextYPos + y2
+
+          if (newY >= this.height) {
+            this.placeBlock()
+            return
+          }
+
+          if (this.grid[newY][newX] !== ".") {
+            this.placeBlock()
+            return
+          }
+        }
       }
       this.activeBlock.position.y = nextYPos
     }
