@@ -30,6 +30,9 @@ export class Board {
         .map(x => x.split(""))
       for (let y = 0; y < this.activeBlock.height; y++) {
         for (let x = 0; x < this.activeBlock.width; x++) {
+          if (test[y][x] === ".") {
+            continue
+          }
           display[y + this.activeBlock.position.y][x + this.activeBlock.position.x] = test[y][x]
         }
       }
