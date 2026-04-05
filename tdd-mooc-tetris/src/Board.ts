@@ -40,7 +40,7 @@ export class Board {
       throw("already falling")
     }
     const size = typeof shape !== "string"
-      ? shape.toString().split("\n").length - 1
+      ? shape.toString().split("\n").filter(x => x.length !== 0).length
       : 1
     const test = Math.floor((this.width - size) / 2);
     this.activeBlock = {
