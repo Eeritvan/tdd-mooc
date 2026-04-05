@@ -4,7 +4,7 @@ interface ActiveBlock {
   position: { x: number, y: number }
   width: number
   height: number
-  shape: string | Tetromino
+  shape: Tetromino
 }
 
 export class Board {
@@ -19,8 +19,8 @@ export class Board {
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."))
   }
 
-  private static toTetromino(s: string | Tetromino) {
-    return typeof s === "string" ? Tetromino.createGrid(s) : s
+  private static toTetromino(shape: string | Tetromino) {
+    return typeof shape === "string" ? Tetromino.createGrid(shape) : shape
   }
 
   toString() {
