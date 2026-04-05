@@ -12,11 +12,6 @@ interface ActiveBlock {
   shape: string
 }
 
-interface ActiveBlock2 {
-  position: { x: number, y: number }
-  shape: Shape
-}
-
 export class Board {
   width: number
   height: number
