@@ -77,9 +77,9 @@ export class Board {
 
   tick() {
     if (this.activeBlock) {
-      const { x, y } = this.activeBlock.position;
+      const { height, width, position: { x, y }, shape } = this.activeBlock;
 
-      const test = this.activeBlock.shape
+      const test = shape
         .toString()
         .split("\n")
         .filter(x => x.length !== 0)
@@ -87,8 +87,8 @@ export class Board {
 
       const nextYPos = y + 1
 
-      for (let y2 = 0; y2 < this.activeBlock.height; y2++) {
-        for (let x2 = 0; x2 < this.activeBlock.width; x2++) {
+      for (let y2 = 0; y2 < height; y2++) {
+        for (let x2 = 0; x2 < width; x2++) {
           if (test[y2][x2] === ".") {
             continue
           }
