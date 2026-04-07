@@ -116,4 +116,9 @@ export class Board {
     if (!this.activeBlock) return
     this.activeBlock.position.x = this.activeBlock.position.x + 1
   }
+
+  moveDown() {
+    if (!this.activeBlock) return
+    this.activeBlock.position.y = this.activeBlock.position.y + 1
+  }
 }
