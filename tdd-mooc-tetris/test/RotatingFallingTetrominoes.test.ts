@@ -23,8 +23,18 @@ describe("falling rotating tetrominoes", () => {
     );
   });
 
-  test.skip("a falling tetromino can be rotated right", () => {
+  test("a falling tetromino can be rotated right", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight();
 
+    expect(board.toString()).to.equalShape(
+      `....T.....
+       ....TT....
+       ....T.....
+       ..........
+       ..........
+       ..........`
+    );
   });
 
   test.skip("a falling tetromino cant be rotated left if there is no room", () => {
