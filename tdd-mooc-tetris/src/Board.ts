@@ -73,6 +73,36 @@ export class Board {
     this.activeBlock = null
   }
 
+  private checkCollisions(block: ActiveBlock): boolean {
+    const { position: { x: baseX, y: baseY }, width, height, shape } = block
+    const activeShape = shape.getGrid()
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        if (activeShape[y][x] === ".") {
+          continue
+        }
+
+        const newX = baseX + x
+        const newY = baseY + y
+
+        if (newX < 0 || newX >= this.width) {
+          return false
+        }
+
+        if (newY >= this.height) {
+          return false
+        }
+
+        if (this.grid[newY][newX] !== ".") {
+          return false
+        }
+      }
+    }
+
+    return true
+  }
+
   tick() {
     if (!this.activeBlock) return
 
