@@ -164,4 +164,28 @@ describe("Moving tetrominoes", () => {
        .....TTT..`
     );
   });
+
+  test("it cannot be moved down through other blocks", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+
+    board.drop(Tetromino.O_SHAPE);
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+
+    expect(board.hasFalling()).to.equal(false)
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ....OO....
+       ....OO....
+       ....T.....
+       ...TTT....`
+    );
+  });
 });
