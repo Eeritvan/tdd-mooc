@@ -106,4 +106,7 @@ export class Board {
   hasFalling() {
     return this.activeBlock !== null
   }
+
+  moveLeft() {
+  }
 }
