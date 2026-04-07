@@ -1,4 +1,6 @@
+import { V4MAPPED } from "node:dns";
 import { RotatingShape } from "./RotatingShape";
+import { isFloat64Array } from "node:util/types";
 
 export class Tetromino {
   private shape: RotatingShape
@@ -16,7 +18,9 @@ export class Tetromino {
     return Tetromino.createGrid(
       `.T.
        TTT
-       ...`
+       ...`,
+      4,
+      0,
     );
   }
 
@@ -26,7 +30,9 @@ export class Tetromino {
        .....
        IIII.
        .....
-       .....`
+       .....`,
+      2,
+      0
     );
   }
 
@@ -34,7 +40,9 @@ export class Tetromino {
     return Tetromino.createGrid(
       `.OO
        .OO
-       ...`
+       ...`,
+       1,
+       0
     );
   }
 
