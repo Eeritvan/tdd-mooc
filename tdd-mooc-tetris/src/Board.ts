@@ -159,6 +159,6 @@ export class Board {
   rotateLeft() {
     if (!this.activeBlock) return
 
-    this.activeBlock.shape = this.activeBlock.shape.rotateRight()
+    this.activeBlock.shape = this.activeBlock.shape.rotateLeft()
   }
 }
