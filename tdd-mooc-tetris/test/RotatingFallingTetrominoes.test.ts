@@ -9,6 +9,12 @@ function fallToBottom(board: Board) {
   }
 }
 
+function moveToLeftWall(board: Board) {
+  for (let i = 0; i < 10; i++) {
+    board.moveLeft();
+  }
+}
+
 describe("falling rotating tetrominoes", () => {
   let board: Board;
   beforeEach(() => {
@@ -72,7 +78,7 @@ describe("falling rotating tetrominoes", () => {
     );
   });
 
-  test.skip("a falling tetromino cant be rotated right if there is no room", () => {
+  test("a falling tetromino cant be rotated right if there is no room", () => {
     board.drop(Tetromino.I_SHAPE);
     board.rotateRight();
     board.moveLeft()
@@ -101,7 +107,35 @@ describe("falling rotating tetrominoes", () => {
     );
   });
 
-  test.skip("wall kick???", () => {
+  test.skip("T-SHAPE left rotation too close to left wall triggers wall kick", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight()
+    moveToLeftWall(board)
+    board.rotateLeft()
 
+    expect(board.toString()).to.equalShape(
+      `.T........
+       TTT.......
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
+
+  test.skip("T-SHAPE right rotation too close to left wall triggers wall kick", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateRight()
+    moveToLeftWall(board)
+    board.rotateRight()
+
+    expect(board.toString()).to.equalShape(
+      `TTT.......
+       .T........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
   });
 });
