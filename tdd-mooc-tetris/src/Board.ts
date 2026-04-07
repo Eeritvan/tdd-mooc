@@ -1,3 +1,4 @@
+import { createLogger } from "vite"
 import { Tetromino } from "./Tetromino"
 
 interface ActiveBlock {
@@ -109,6 +110,11 @@ export class Board {
 
   moveLeft() {
     if (!this.activeBlock) return
+
+    const { position: { x: baseX, y: baseY }, width, height, shape } = this.activeBlock
+    const activeShape = shape.getGrid()
+    const nextXPos = baseX - 1
+
     this.activeBlock.position.x = this.activeBlock.position.x - 1
   }
 
