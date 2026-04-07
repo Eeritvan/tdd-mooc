@@ -164,6 +164,16 @@ export class Board {
     if (!this.activeBlock) return
 
     const { height, width, position: { x: baseX, y: baseY }, shape } = this.activeBlock;
+    const newBlock: ActiveBlock = { ...this.activeBlock, position: { x: baseX, y: baseY + 1 } }
+
+    if (!this.checkCollisions(newBlock)) {
+      this.placeBlock()
+      return
+    }
+
+    this.activeBlock.position.y = baseY + 1
+    return
+
     const activeShape = shape.getGrid()
     const nextYPos = baseY + 1
 
