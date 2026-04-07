@@ -11,7 +11,7 @@ export class Tetromino {
     this.currentOrientation = currentOrientation
   }
 
-  static createGrid(shape: string, orientations: number, currentOrientations: number) {
+  static createGrid(shape: string, orientations: number, currentOrientations = 0) {
     const newShape = RotatingShape.fromString(shape)
     return new Tetromino(
       newShape,
@@ -26,7 +26,6 @@ export class Tetromino {
        TTT
        ...`,
       4,
-      0,
     );
   }
 
@@ -37,8 +36,7 @@ export class Tetromino {
        IIII.
        .....
        .....`,
-      2,
-      0
+      2
     );
   }
 
@@ -47,8 +45,7 @@ export class Tetromino {
       `.OO
        .OO
        ...`,
-       1,
-       0
+       1
     );
   }
 
@@ -58,7 +55,7 @@ export class Tetromino {
 
   rotateRight() {
     return new Tetromino(
-      this.shape.rotateRight(),
+      this.shape,
       this.orientations,
       this.currentOrientation = this.currentOrientation + 1,
     )
@@ -66,7 +63,7 @@ export class Tetromino {
 
   rotateLeft() {
     return new Tetromino(
-      this.shape.rotateLeft(),
+      this.shape,
       this.orientations,
       this.currentOrientation = this.currentOrientation - 1,
     )
