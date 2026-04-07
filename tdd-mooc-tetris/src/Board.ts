@@ -161,4 +161,10 @@ export class Board {
 
     this.activeBlock.shape = this.activeBlock.shape.rotateLeft()
   }
+
+  rotateRight() {
+    if (!this.activeBlock) return
+
+    this.activeBlock.shape = this.activeBlock.shape.rotateRight()
+  }
 }
