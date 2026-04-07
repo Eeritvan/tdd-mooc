@@ -50,14 +50,19 @@ export class Tetromino {
   }
 
   toString() {
-    return this.shape.toString()
+    const rotations = ((this.currentOrientation % this.orientations) + this.orientations) % this.orientations;
+    let newShape = this.shape;
+    for (let i = 0; Math.abs(i) < rotations; i++) {
+      newShape = newShape.rotateRight();
+    }
+    return newShape.toString()
   }
 
   rotateRight() {
     return new Tetromino(
       this.shape,
       this.orientations,
-      this.currentOrientation = this.currentOrientation + 1,
+      this.currentOrientation + 1,
     )
   }
 
@@ -65,7 +70,7 @@ export class Tetromino {
     return new Tetromino(
       this.shape,
       this.orientations,
-      this.currentOrientation = this.currentOrientation - 1,
+      this.currentOrientation - 1,
     )
   }
 
