@@ -73,7 +73,32 @@ describe("falling rotating tetrominoes", () => {
   });
 
   test.skip("a falling tetromino cant be rotated right if there is no room", () => {
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.moveLeft()
+    fallToBottom(board)
 
+    board.drop(Tetromino.I_SHAPE);
+    board.rotateRight();
+    board.moveRight()
+    board.moveRight()
+    fallToBottom(board)
+
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft()
+    board.moveRight()
+    board.moveDown()
+    board.moveDown()
+    board.rotateRight()
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ...I.TI...
+       ...ITTI...
+       ...I.TI...
+       ...I..I...`
+    );
   });
 
   test.skip("wall kick???", () => {
