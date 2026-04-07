@@ -115,7 +115,22 @@ export class Board {
     const activeShape = shape.getGrid()
     const nextXPos = baseX - 1
 
-    this.activeBlock.position.x = this.activeBlock.position.x - 1
+    for (let y2 = 0; y2 < height; y2++) {
+      for (let x2 = 0; x2 < width; x2++) {
+        if (activeShape[y2][x2] === ".") {
+          continue
+        }
+
+        const newX = nextXPos + x2
+        const newY = baseY + y2
+
+        if (this.grid[newY][newX] !== ".") {
+          return
+        }
+      }
+    }
+
+    this.activeBlock.position.x = nextXPos
   }
 
   moveRight() {
