@@ -52,7 +52,7 @@ export class Tetromino {
   toString() {
     const rotations = ((this.currentOrientation % this.orientations) + this.orientations) % this.orientations;
     let newShape = this.shape;
-    for (let i = 0; Math.abs(i) < rotations; i++) {
+    for (let i = 0; i < rotations; i++) {
       newShape = newShape.rotateRight();
     }
     return newShape.toString()
