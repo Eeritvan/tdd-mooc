@@ -108,4 +108,32 @@ describe("Moving tetrominoes", () => {
        ....OO....`
     );
   });
+
+  test("it cannot be moved left through other blocks", () => {
+    board.drop(Tetromino.T_SHAPE);
+    board.moveLeft()
+    board.moveLeft()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+
+    board.drop(Tetromino.O_SHAPE);
+    board.moveDown()
+    board.moveDown()
+    board.moveDown()
+    board.moveLeft()
+    board.moveLeft()
+    board.moveLeft()
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ...OO.....
+       ..TOO.....
+       .TTT......`
+    );
+  });
 });
