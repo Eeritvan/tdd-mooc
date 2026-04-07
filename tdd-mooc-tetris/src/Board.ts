@@ -157,6 +157,10 @@ export class Board {
   }
 
   rotateLeft() {
+    if (!this.activeBlock) return
 
+    console.log("here", this.activeBlock.shape.getGrid())
+    const newTetromino = this.activeBlock.shape.rotateRight()
+    console.log("here2", newTetromino.getGrid())
   }
 }
