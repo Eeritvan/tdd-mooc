@@ -1,4 +1,3 @@
-import { createLogger } from "vite"
 import { Tetromino } from "./Tetromino"
 
 interface ActiveBlock {
@@ -42,7 +41,7 @@ export class Board {
     if (this.activeBlock) throw ("already falling")
 
     const newShape = typeof shape === "string"
-      ? Tetromino.createGrid(shape)
+      ? Tetromino.createGrid(shape, 1)
       : shape
 
     const size = newShape.getGrid().length
@@ -163,7 +162,7 @@ export class Board {
   moveDown() {
     if (!this.activeBlock) return
 
-    const { position: { x: baseX, y: baseY } } = this.activeBlock;
+    const { position: { x: baseX, y: baseY } } = this.activeBlock
     const newBlock: ActiveBlock = { ...this.activeBlock, position: { x: baseX, y: baseY + 1 } }
 
     if (!this.checkCollisions(newBlock)) {
