@@ -141,26 +141,12 @@ export class Board {
   moveLeft() {
     if (!this.activeBlock) return
 
-    const { position: { x: baseX, y: baseY }, width, height, shape } = this.activeBlock
-    const activeShape = shape.getGrid()
-    const nextXPos = baseX - 1
+    const { position: { x: baseX, y: baseY } } = this.activeBlock
+    const newBlock: ActiveBlock = { ...this.activeBlock, position: { x: baseX - 1, y: baseY  } }
 
-    for (let y2 = 0; y2 < height; y2++) {
-      for (let x2 = 0; x2 < width; x2++) {
-        if (activeShape[y2][x2] === ".") {
-          continue
-        }
-
-        const newX = nextXPos + x2
-        const newY = baseY + y2
-
-        if (this.grid[newY][newX] !== ".") {
-          return
-        }
-      }
+    if (this.checkCollisions(newBlock)) {
+      this.activeBlock.position.x = baseX - 1
     }
-
-    this.activeBlock.position.x = nextXPos
   }
 
   moveRight() {
