@@ -155,4 +155,8 @@ export class Board {
 
     this.activeBlock.position.y = baseY + 1
   }
+
+  rotateLeft() {
+
+  }
 }
