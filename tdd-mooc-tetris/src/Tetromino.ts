@@ -1,6 +1,4 @@
-import { V4MAPPED } from "node:dns";
 import { RotatingShape } from "./RotatingShape";
-import { isFloat64Array } from "node:util/types";
 
 export class Tetromino {
   private shape: RotatingShape
@@ -60,13 +58,17 @@ export class Tetromino {
 
   rotateRight() {
     return new Tetromino(
-      this.shape.rotateRight()
+      this.shape.rotateRight(),
+      this.orientations,
+      this.currentOrientation = this.currentOrientation + 1,
     )
   }
 
   rotateLeft() {
     return new Tetromino(
-      this.shape.rotateLeft()
+      this.shape.rotateLeft(),
+      this.orientations,
+      this.currentOrientation = this.currentOrientation - 1,
     )
   }
 
