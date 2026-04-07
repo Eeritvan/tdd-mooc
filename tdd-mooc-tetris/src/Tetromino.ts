@@ -15,7 +15,11 @@ export class Tetromino {
 
   static createGrid(shape: string, orientations: number, currentOrientations: number) {
     const newShape = RotatingShape.fromString(shape)
-    return new Tetromino(newShape)
+    return new Tetromino(
+      newShape,
+      orientations,
+      currentOrientations
+    )
   }
 
   static get T_SHAPE(): Tetromino {
@@ -55,11 +59,15 @@ export class Tetromino {
   }
 
   rotateRight() {
-    return new Tetromino(this.shape.rotateRight())
+    return new Tetromino(
+      this.shape.rotateRight()
+    )
   }
 
   rotateLeft() {
-    return new Tetromino(this.shape.rotateLeft())
+    return new Tetromino(
+      this.shape.rotateLeft()
+    )
   }
 
   getGrid() {
