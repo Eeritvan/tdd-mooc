@@ -159,7 +159,16 @@ export class Board {
   rotateLeft() {
     if (!this.activeBlock) return
 
-    this.activeBlock.shape = this.activeBlock.shape.rotateLeft()
+    const newTetromino = this.activeBlock.shape.rotateLeft()
+
+    const newBlock: ActiveBlock = {
+      ...this.activeBlock,
+      shape: newTetromino,
+    }
+
+    if (this.checkCollisions(newBlock)) {
+      this.activeBlock = newBlock
+    }
   }
 
   rotateRight() {
