@@ -160,6 +160,32 @@ export class Board {
 
   moveDown() {
     if (!this.activeBlock) return
-    this.activeBlock.position.y = this.activeBlock.position.y + 1
+
+    const { height, width, position: { x: baseX, y: baseY }, shape } = this.activeBlock;
+    const activeShape = shape.getGrid()
+    const nextYPos = baseY + 1
+
+    for (let y2 = 0; y2 < height; y2++) {
+      for (let x2 = 0; x2 < width; x2++) {
+        if (activeShape[y2][x2] === ".") {
+          continue
+        }
+
+        const newX = baseX + x2
+        const newY = nextYPos + y2
+
+        if (newY >= this.height) {
+          this.placeBlock()
+          return
+        }
+
+        if (this.grid[newY][newX] !== ".") {
+          this.placeBlock()
+          return
+        }
+      }
+    }
+
+    this.activeBlock.position.y = nextYPos
   }
 }
