@@ -7,19 +7,6 @@ function distinctOrientations(shape: Tetromino) {
   let goingRight = shape;
   let goingLeft = shape;
   for (let i = 0; i < 10; i++) {
-    distinct.add(goingRight.toString());
-    goingRight = goingRight.rotateRight();
-    distinct.add(goingLeft.toString());
-    goingLeft = goingLeft.rotateLeft();
-  }
-  return distinct;
-}
-
-function distinctOrientations2(shape: Tetromino) {
-  const distinct = new Set();
-  let goingRight = shape;
-  let goingLeft = shape;
-  for (let i = 0; i < 10; i++) {
     distinct.add(goingRight.toString2());
     goingRight = goingRight.rotateRight();
     distinct.add(goingLeft.toString2());
@@ -56,7 +43,7 @@ describe("The T shape", () => {
   });
 
   test("has 4 distinct orientations", () => {
-    expect(distinctOrientations2(shape).size).to.equal(4);
+    expect(distinctOrientations(shape).size).to.equal(4);
   });
 });
 
@@ -91,7 +78,7 @@ describe("The I shape", () => {
   });
 
   test("has 2 distinct orientations", () => {
-    expect(distinctOrientations2(shape).size).to.equal(2);
+    expect(distinctOrientations(shape).size).to.equal(2);
   });
 });
 
@@ -120,6 +107,6 @@ describe("The O shape", () => {
   });
 
   test("has 1 distinct orientations", () => {
-    expect(distinctOrientations2(shape).size).to.equal(1);
+    expect(distinctOrientations(shape).size).to.equal(1);
   });
 });
