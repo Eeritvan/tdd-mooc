@@ -2,16 +2,13 @@ export class Tetromino {
   private orientations: string[][][]
   private orientationIndex: number
 
-  constructor(currentOrientation: number, shapes2: string[][][]) {
-    this.orientations = shapes2
+  constructor(orientations: string[][][], currentOrientation = 0) {
+    this.orientations = orientations
     this.orientationIndex = currentOrientation
   }
 
   static createGrid(shapes: string[][][]) {
-    return new Tetromino(
-      0,
-      shapes
-    )
+    return new Tetromino(shapes)
   }
 
   static get T_SHAPE2() {
@@ -96,15 +93,15 @@ export class Tetromino {
 
   rotateRight() {
     return new Tetromino(
+      this.orientations,
       this.orientationIndex + 1,
-      this.orientations
     )
   }
 
   rotateLeft() {
     return new Tetromino(
+      this.orientations,
       this.orientationIndex - 1,
-      this.orientations
     )
   }
 
