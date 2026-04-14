@@ -1,10 +1,10 @@
 export class Tetromino {
-  private shapes2: string[][][]
-  private currentOrientation: number
+  private orientations: string[][][]
+  private orientationIndex: number
 
   constructor(currentOrientation: number, shapes2: string[][][]) {
-    this.shapes2 = shapes2
-    this.currentOrientation = currentOrientation
+    this.orientations = shapes2
+    this.orientationIndex = currentOrientation
   }
 
   static createGrid(shapes: string[][][]) {
@@ -90,26 +90,26 @@ export class Tetromino {
   }
 
   toString() {
-    const index = ((this.currentOrientation % 4) + 4) % 4
-    return this.shapes2[index].map(x => x.join("")).join('\n') + '\n'
+    const index = ((this.orientationIndex % 4) + 4) % 4
+    return this.orientations[index].map(x => x.join("")).join('\n') + '\n'
   }
 
   rotateRight() {
     return new Tetromino(
-      this.currentOrientation + 1,
-      this.shapes2
+      this.orientationIndex + 1,
+      this.orientations
     )
   }
 
   rotateLeft() {
     return new Tetromino(
-      this.currentOrientation - 1,
-      this.shapes2
+      this.orientationIndex - 1,
+      this.orientations
     )
   }
 
   getGrid() {
-    const rotations = ((this.currentOrientation % 4) + 4) % 4;
-    return this.shapes2[rotations]
+    const rotations = ((this.orientationIndex % 4) + 4) % 4;
+    return this.orientations[rotations]
   }
 }
