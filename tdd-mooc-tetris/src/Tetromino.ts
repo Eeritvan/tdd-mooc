@@ -18,7 +18,8 @@ export class Tetromino {
     return new Tetromino(
       newShape,
       orientations,
-      currentOrientations
+      currentOrientations,
+      []
     )
   }
 
@@ -94,11 +95,17 @@ export class Tetromino {
     return newShape.toString()
   }
 
+  toString2() {
+    console.log("here", this.shapes2)
+    // return this.shapes2[this.currentOrientation]
+  }
+
   rotateRight() {
     return new Tetromino(
       this.shape,
       this.orientations,
       this.currentOrientation + 1,
+      []
     )
   }
 
@@ -107,6 +114,7 @@ export class Tetromino {
       this.shape,
       this.orientations,
       this.currentOrientation - 1,
+      []
     )
   }
 
