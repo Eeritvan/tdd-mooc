@@ -13,17 +13,7 @@ export class Tetromino {
     this.currentOrientation = currentOrientation
   }
 
-  static createGrid(shape: string, orientations: number, currentOrientations = 0) {
-    const newShape = RotatingShape.fromString(shape)
-    return new Tetromino(
-      newShape,
-      orientations,
-      currentOrientations,
-      []
-    )
-  }
-
-  static createGrid2(shapes: string[][][]) {
+  static createGrid(shapes: string[][][]) {
     return new Tetromino(
       RotatingShape.fromString('x'),
       4,
@@ -33,7 +23,7 @@ export class Tetromino {
   }
 
   static get T_SHAPE2() {
-    return Tetromino.createGrid2([
+    return Tetromino.createGrid([
       [
         ['.', '.', '.'],
         ['T', 'T', 'T'],
@@ -58,7 +48,7 @@ export class Tetromino {
   }
 
   static get I_SHAPE2() {
-    return Tetromino.createGrid2([
+    return Tetromino.createGrid([
       [
         ['.', '.', '.', '.'],
         ['I', 'I', 'I', 'I'],
@@ -87,7 +77,7 @@ export class Tetromino {
   }
 
   static get O_SHAPE2() {
-    return Tetromino.createGrid2([
+    return Tetromino.createGrid([
       [
         ['O', 'O'],
         ['O', 'O'],
