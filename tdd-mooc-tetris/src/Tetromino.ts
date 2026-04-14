@@ -2,11 +2,13 @@ import { RotatingShape } from "./RotatingShape";
 
 export class Tetromino {
   private shape: RotatingShape
+  private shapes2: string[][][]
   private orientations: number
   private currentOrientation: number
 
-  constructor(shape: RotatingShape, orientation: number, currentOrientation: number) {
+  constructor(shape: RotatingShape, orientation: number, currentOrientation: number, shapes2: string[][][]) {
     this.shape = shape
+    this.shapes2 = shapes2
     this.orientations = orientation
     this.currentOrientation = currentOrientation
   }
@@ -21,7 +23,12 @@ export class Tetromino {
   }
 
   static createGrid2(shapes: string[][][]) {
-    console.log(shapes)
+    return new Tetromino(
+      RotatingShape.fromString('x'),
+      4,
+      0,
+      shapes
+    )
   }
 
   static T_SHAPE2() {
