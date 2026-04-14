@@ -20,12 +20,16 @@ export class Tetromino {
     )
   }
 
-  T_SHAPE2() {
-    return [
+  static createGrid2(shapes: string[][][]) {
+    console.log(shapes)
+  }
+
+  static T_SHAPE2() {
+    return Tetromino.createGrid2([
       [
-        ['.', '.', '.'],
+        ['.', 'T', '.'],
         ['T', 'T', 'T'],
-        ['.', 'T', '.']
+        ['.', '.', '.']
       ],
       [
         ['.', 'T', '.'],
@@ -42,7 +46,7 @@ export class Tetromino {
         ['T', 'T', '.'],
         ['.', 'T', '.']
       ],
-    ]
+    ])
   }
 
   static get T_SHAPE(): Tetromino {
