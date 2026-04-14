@@ -11,7 +11,7 @@ export class Tetromino {
     return new Tetromino(shapes)
   }
 
-  static get T_SHAPE2() {
+  static get T_SHAPE() {
     return Tetromino.createGrid([
       [
         ['.', '.', '.'],
@@ -36,7 +36,7 @@ export class Tetromino {
     ])
   }
 
-  static get I_SHAPE2() {
+  static get I_SHAPE() {
     return Tetromino.createGrid([
       [
         ['.', '.', '.', '.'],
@@ -65,7 +65,7 @@ export class Tetromino {
     ])
   }
 
-  static get O_SHAPE2() {
+  static get O_SHAPE() {
     return Tetromino.createGrid([
       [
         ['O', 'O'],
