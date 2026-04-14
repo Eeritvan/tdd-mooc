@@ -122,16 +122,6 @@ export class Tetromino {
 
   getGrid() {
     const rotations = ((this.currentOrientation % this.orientations) + this.orientations) % this.orientations;
-    try {
-      if (this.shapes2[0].length !== undefined) {
-        return this.shapes2[rotations]
-      }
-    } catch {
-      let newShape = this.shape;
-      for (let i = 0; i < rotations; i++) {
-        newShape = newShape.rotateRight();
-      }
-      return newShape.getGrid()
-    }
+    return this.shapes2[rotations]
   }
 }
