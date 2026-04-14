@@ -2,6 +2,7 @@ import { RotatingShape } from "./RotatingShape";
 
 export class Tetromino {
   private shape: RotatingShape
+  private shape2: string[]
   private orientations: number
   private currentOrientation: number
 
@@ -18,6 +19,10 @@ export class Tetromino {
       orientations,
       currentOrientations
     )
+  }
+
+  static createGrid2(shapes: string) {
+
   }
 
   static get T_SHAPE(): Tetromino {
