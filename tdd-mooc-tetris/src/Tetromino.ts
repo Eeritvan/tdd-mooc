@@ -32,12 +32,12 @@ export class Tetromino {
     )
   }
 
-  static T_SHAPE2() {
+  static get T_SHAPE2() {
     return Tetromino.createGrid2([
       [
-        ['.', 'T', '.'],
+        ['.', '.', '.'],
         ['T', 'T', 'T'],
-        ['.', '.', '.']
+        ['.', 'T', '.']
       ],
       [
         ['.', 'T', '.'],
@@ -45,9 +45,9 @@ export class Tetromino {
         ['.', 'T', '.']
       ],
       [
-        ['.', '.', '.'],
+        ['.', 'T', '.'],
         ['T', 'T', 'T'],
-        ['.', 'T', '.']
+        ['.', '.', '.']
       ],
       [
         ['.', 'T', '.'],
@@ -96,8 +96,8 @@ export class Tetromino {
   }
 
   toString2() {
-    console.log("here", this.shapes2)
-    // return this.shapes2[this.currentOrientation]
+    const index = ((this.currentOrientation % this.orientations) + this.orientations) % this.orientations
+    return this.shapes2[index].map(x => x.join("")).join('\n') + '\n'
   }
 
   rotateRight() {
@@ -105,7 +105,7 @@ export class Tetromino {
       this.shape,
       this.orientations,
       this.currentOrientation + 1,
-      []
+      this.shapes2
     )
   }
 
@@ -114,7 +114,7 @@ export class Tetromino {
       this.shape,
       this.orientations,
       this.currentOrientation - 1,
-      []
+      this.shapes2
     )
   }
 
