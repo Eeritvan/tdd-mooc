@@ -115,6 +115,27 @@ export class Tetromino {
     );
   }
 
+  static get O_SHAPE2() {
+    return Tetromino.createGrid2([
+      [
+        ['O', 'O'],
+        ['O', 'O'],
+      ],
+      [
+        ['O', 'O'],
+        ['O', 'O'],
+      ],
+      [
+        ['O', 'O'],
+        ['O', 'O'],
+      ],
+      [
+        ['O', 'O'],
+        ['O', 'O'],
+      ],
+    ])
+  }
+
   toString() {
     const rotations = ((this.currentOrientation % this.orientations) + this.orientations) % this.orientations;
     let newShape = this.shape;
