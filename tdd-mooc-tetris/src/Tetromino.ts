@@ -106,15 +106,6 @@ export class Tetromino {
     );
   }
 
-  static get O_SHAPE(): Tetromino {
-    return Tetromino.createGrid(
-      `.OO
-       .OO
-       ...`,
-       1
-    );
-  }
-
   static get O_SHAPE2() {
     return Tetromino.createGrid2([
       [
