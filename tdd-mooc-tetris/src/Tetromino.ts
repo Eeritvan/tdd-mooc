@@ -86,6 +86,31 @@ export class Tetromino {
     ])
   }
 
+  static get L_SHAPE() {
+    return Tetromino.createGrid([
+      [
+        ['.', '.', '.'],
+        ['L', 'L', 'L'],
+        ['L', '.', '.']
+      ],
+      [
+        ['.', 'L', '.'],
+        ['.', 'L', '.'],
+        ['.', 'L', 'L']
+      ],
+      [
+        ['.', '.', '.'],
+        ['.', '.', 'L'],
+        ['L', 'L', 'L']
+      ],
+      [
+        ['L', 'L', '.'],
+        ['.', 'L', '.'],
+        ['.', 'L', '.']
+      ],
+    ])
+  }
+
   toString() {
     const index = ((this.orientationIndex % 4) + 4) % 4
     return this.orientations[index].map(x => x.join("")).join('\n') + '\n'
