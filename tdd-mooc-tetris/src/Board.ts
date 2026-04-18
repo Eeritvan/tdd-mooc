@@ -165,13 +165,19 @@ export class Board {
 
     const newTetromino = this.activeBlock.shape.rotateLeft()
 
-    const newBlock: ActiveBlock = {
-      ...this.activeBlock,
-      shape: newTetromino,
-    }
+    const offsets = [0, 1, -1]
 
-    if (this.checkCollisions(newBlock)) {
-      this.activeBlock = newBlock
+    for (const xOffset of offsets) {
+      const newBlock: ActiveBlock = {
+        ...this.activeBlock,
+        position: { x: this.activeBlock.position.x + xOffset, y: this.activeBlock.position.y },
+        shape: newTetromino,
+      }
+
+      if (this.checkCollisions(newBlock)) {
+        this.activeBlock = newBlock
+        return
+      }
     }
   }
 

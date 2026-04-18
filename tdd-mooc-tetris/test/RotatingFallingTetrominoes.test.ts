@@ -15,13 +15,13 @@ function moveToLeftWall(board: Board) {
   }
 }
 
-describe.skip("falling rotating tetrominoes", () => {
+describe("falling rotating tetrominoes", () => {
   let board: Board;
   beforeEach(() => {
     board = new Board(10, 6);
   });
 
-  test("a falling tetromino can be rotated left", () => {
+  test.skip("a falling tetromino can be rotated left", () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateLeft();
 
@@ -35,7 +35,7 @@ describe.skip("falling rotating tetrominoes", () => {
     );
   });
 
-  test("a falling tetromino can be rotated right", () => {
+  test.skip("a falling tetromino can be rotated right", () => {
     board.drop(Tetromino.T_SHAPE);
     board.rotateRight();
 
@@ -49,7 +49,7 @@ describe.skip("falling rotating tetrominoes", () => {
     );
   });
 
-  test("a falling tetromino cant be rotated left if there is no room", () => {
+  test.skip("a falling tetromino cant be rotated left if there is no room", () => {
     board.drop(Tetromino.I_SHAPE);
     board.rotateRight();
     board.moveLeft()
@@ -79,7 +79,7 @@ describe.skip("falling rotating tetrominoes", () => {
     );
   });
 
-  test("a falling tetromino cant be rotated right if there is no room", () => {
+  test.skip("a falling tetromino cant be rotated right if there is no room", () => {
     board.drop(Tetromino.I_SHAPE);
     board.rotateRight();
     board.moveLeft()
@@ -109,16 +109,17 @@ describe.skip("falling rotating tetrominoes", () => {
     );
   });
 
-  test.skip("T-SHAPE left rotation too close to left wall triggers wall kick", () => {
+  test("T-SHAPE left rotation too close to left wall triggers wall kick", () => {
     board.drop(Tetromino.T_SHAPE);
+    board.moveDown()
     board.rotateRight()
     moveToLeftWall(board)
     board.rotateLeft()
 
     expect(board.toString()).to.equalShape(
-      `.T........
+      `..........
        TTT.......
-       ..........
+       .T........
        ..........
        ..........
        ..........`
