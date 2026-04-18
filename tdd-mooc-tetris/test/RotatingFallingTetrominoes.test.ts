@@ -209,21 +209,22 @@ describe("falling rotating tetrominoes", () => {
     );
   });
 
-  test.skip("I-SHAPE cannot be wall kicked on right wall", () => {
-    board.drop(Tetromino.I_SHAPE)
-    board.moveDown()
-    board.moveDown()
-    board.rotateLeft()
-    moveToRightWall(board)
-    board.rotateRight()
+  // TODO: fix
+  // test("I-SHAPE cannot be wall kicked on right wall", () => {
+  //   board.drop(Tetromino.I_SHAPE)
+  //   board.moveDown()
+  //   board.moveDown()
+  //   board.rotateLeft()
+  //   moveToRightWall(board)
+  //   board.rotateRight()
 
-    expect(board.toString()).to.equalShape(
-      `..........
-       .........I
-       .........I
-       .........I
-       .........I
-       ..........`
-    )
-  })
+  //   expect(board.toString()).to.equalShape(
+  //     `..........
+  //      .........I
+  //      .........I
+  //      .........I
+  //      .........I
+  //      ..........`
+  //   )
+  // })
 })
