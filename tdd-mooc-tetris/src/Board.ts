@@ -41,14 +41,18 @@ export class Board {
     if (this.activeBlock) throw ("already falling")
 
     const newShape = typeof shape === "string"
-      ? Tetromino.createGrid(shape, 1)
+      ? Tetromino.createGrid([[[ shape ]]])
       : shape
 
-    const size = newShape.getGrid().length
+    const grid = newShape.getGrid()
+    const size = grid.length
+
+    const isTopEmpty = grid[0].some(x => x !== ".")
+    const newY = isTopEmpty ? 0 : -1
 
     const middle = Math.floor((this.width - size) / 2);
     this.activeBlock = {
-      position: { x: middle, y: 0 },
+      position: { x: middle, y: newY },
       width: size,
       height: size,
       shape: newShape
@@ -89,7 +93,7 @@ export class Board {
           return false
         }
 
-        if (newY >= this.height) {
+        if (newY < 0 || newY >= this.height) {
           return false
         }
 

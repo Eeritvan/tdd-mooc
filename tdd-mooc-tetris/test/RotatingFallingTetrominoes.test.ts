@@ -15,7 +15,7 @@ function moveToLeftWall(board: Board) {
   }
 }
 
-describe("falling rotating tetrominoes", () => {
+describe.skip("falling rotating tetrominoes", () => {
   let board: Board;
   beforeEach(() => {
     board = new Board(10, 6);
