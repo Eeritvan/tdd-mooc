@@ -160,6 +160,12 @@ export class Board {
     this.activeBlock.position.y = baseY + 1
   }
 
+  private isCenterColumnBlocked() {
+    if (!this.activeBlock) return
+
+    return false
+  }
+
   rotateLeft() {
     if (!this.activeBlock) return
 
