@@ -211,6 +211,8 @@ export class Board {
   rotateRight() {
     if (!this.activeBlock) return
 
+    if (this.isCenterColumnBlocked()) return
+
     const newTetromino = this.activeBlock.shape.rotateRight()
 
     const offsets = [0, 1, -1]

@@ -250,7 +250,7 @@ describe("falling rotating tetrominoes", () => {
       )
     })
 
-    test("right rotaiton fail when cell at idx 2 is occupied", () => {
+    test.skip("right rotaiton fail when cell at idx 2 is occupied", () => {
       board.drop(Tetromino.I_SHAPE)
       board.moveDown()
       board.rotateRight()

@@ -1,14 +1,18 @@
+type TetrominoType = "I" | "O" | "T" | "S" | "Z" | "J" | "L" | "OTHER"
+
 export class Tetromino {
+  public type: TetrominoType
   private orientations: string[][][]
   private orientationIndex: number
 
-  constructor(orientations: string[][][], currentOrientation = 0) {
+  constructor(orientations: string[][][], type: TetrominoType = "OTHER",  currentOrientation = 0) {
+    this.type = type
     this.orientations = orientations
     this.orientationIndex = currentOrientation
   }
 
-  static createGrid(shapes: string[][][]) {
-    return new Tetromino(shapes)
+  static createGrid(shapes: string[][][], type: TetrominoType) {
+    return new Tetromino(shapes, type)
   }
 
   static get T_SHAPE() {
@@ -33,7 +37,7 @@ export class Tetromino {
         ['T', 'T', '.'],
         ['.', 'T', '.']
       ],
-    ])
+    ], "T")
   }
 
   static get I_SHAPE() {
@@ -62,7 +66,7 @@ export class Tetromino {
         ['.', '.', 'I', '.'],
         ['.', '.', 'I', '.']
       ],
-    ])
+    ], "I")
   }
 
   static get O_SHAPE() {
@@ -83,7 +87,7 @@ export class Tetromino {
         ['O', 'O'],
         ['O', 'O'],
       ],
-    ])
+    ], "O")
   }
 
   static get L_SHAPE() {
@@ -108,7 +112,7 @@ export class Tetromino {
         ['.', 'L', '.'],
         ['.', 'L', '.']
       ],
-    ])
+    ], "L")
   }
 
   static get J_SHAPE() {
@@ -133,7 +137,7 @@ export class Tetromino {
         ['.', 'J', '.'],
         ['J', 'J', '.']
       ],
-    ])
+    ], "L")
   }
 
   static get S_SHAPE() {
@@ -158,7 +162,7 @@ export class Tetromino {
         ['S', 'S', '.'],
         ['.', 'S', '.']
       ],
-    ])
+    ], "S")
   }
 
   static get Z_SHAPE() {
@@ -183,7 +187,7 @@ export class Tetromino {
         ['.', 'Z', 'Z'],
         ['.', 'Z', '.']
       ],
-    ])
+    ], "Z")
   }
 
   toString() {
@@ -194,6 +198,7 @@ export class Tetromino {
   rotateRight() {
     return new Tetromino(
       this.orientations,
+      this.type,
       this.orientationIndex + 1,
     )
   }
@@ -201,6 +206,7 @@ export class Tetromino {
   rotateLeft() {
     return new Tetromino(
       this.orientations,
+      this.type,
       this.orientationIndex - 1,
     )
   }
