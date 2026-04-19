@@ -59,6 +59,10 @@ export class Board {
     }
   }
 
+  private clearLines() {
+    return
+  }
+
   private placeBlock() {
     if (!this.activeBlock) return
 
@@ -74,6 +78,7 @@ export class Board {
       }
     }
     this.activeBlock = null
+    this.clearLines()
   }
 
   private checkCollisions(block: ActiveBlock): boolean {
