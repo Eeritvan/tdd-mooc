@@ -161,13 +161,34 @@ export class Board {
   }
 
   private isCenterColumnBlocked() {
-    if (!this.activeBlock) return
+    if (!this.activeBlock) return false
+
+    const { position: { x: baseX, y: baseY }, width, height } = this.activeBlock
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        if (this.grid[y + baseY][x + baseX] !== ".") {
+          if (y === 0 && x === 1) {
+            return true
+          }
+          if (y === 1 && x === 1) {
+            return true
+          }
+          if (y === 2 && x === 1) {
+            return true
+          }
+          return false
+        }
+      }
+    }
 
     return false
   }
 
   rotateLeft() {
     if (!this.activeBlock) return
+
+    if (this.isCenterColumnBlocked() === true) return
 
     const newTetromino = this.activeBlock.shape.rotateLeft()
 
