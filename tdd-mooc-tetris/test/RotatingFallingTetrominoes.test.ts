@@ -227,4 +227,27 @@ describe("falling rotating tetrominoes", () => {
   //      ..........`
   //   )
   // })
+
+  describe("center column rules", () => {
+    test("left rotaiton fail when cell at idx 2 is occupied", () => {
+      board.drop(Tetromino.I_SHAPE)
+      board.moveDown()
+      board.rotateRight()
+      fallToBottom(board)
+
+      board.drop(Tetromino.L_SHAPE)
+      board.moveRight()
+      board.moveDown()
+      board.rotateLeft()
+
+      expect(board.toString()).to.equalShape(
+        `..........
+         ....LLL...
+         ....LI....
+         .....I....
+         .....I....
+         .....I....`
+      )
+    })
+  })
 })
