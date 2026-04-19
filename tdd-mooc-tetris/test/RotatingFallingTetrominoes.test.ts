@@ -209,27 +209,26 @@ describe("falling rotating tetrominoes", () => {
     );
   });
 
-  // TODO: fix
-  // test("I-SHAPE cannot be wall kicked on right wall", () => {
-  //   board.drop(Tetromino.I_SHAPE)
-  //   board.moveDown()
-  //   board.moveDown()
-  //   board.rotateLeft()
-  //   moveToRightWall(board)
-  //   board.rotateRight()
+  test("I-SHAPE cannot be wall kicked on right wall", () => {
+    board.drop(Tetromino.I_SHAPE)
+    board.moveDown()
+    board.moveDown()
+    board.rotateLeft()
+    moveToRightWall(board)
+    board.rotateRight()
 
-  //   expect(board.toString()).to.equalShape(
-  //     `..........
-  //      .........I
-  //      .........I
-  //      .........I
-  //      .........I
-  //      ..........`
-  //   )
-  // })
+    expect(board.toString()).to.equalShape(
+      `..........
+       .........I
+       .........I
+       .........I
+       .........I
+       ..........`
+    )
+  })
 
   describe("center column rules", () => {
-    test("left rotaiton fail when cell at idx 2 is occupied", () => {
+    test("left rotation fails when cell at idx 2 is occupied", () => {
       board.drop(Tetromino.I_SHAPE)
       board.moveDown()
       board.rotateRight()
@@ -250,7 +249,7 @@ describe("falling rotating tetrominoes", () => {
       )
     })
 
-    test.skip("right rotaiton fail when cell at idx 2 is occupied", () => {
+    test("right rotation fails when cell at idx 2 is occupied", () => {
       board.drop(Tetromino.I_SHAPE)
       board.moveDown()
       board.rotateRight()

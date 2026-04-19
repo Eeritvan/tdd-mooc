@@ -163,6 +163,9 @@ export class Board {
   private isCenterColumnBlocked() {
     if (!this.activeBlock) return false
 
+    const centerRuleBlocks = ["L", "J", "T"]
+    if (!centerRuleBlocks.includes(this.activeBlock.shape.type)) return false
+
     const { position: { x: baseX, y: baseY }, width, height } = this.activeBlock
 
     for (let y = 0; y < height; y++) {
@@ -192,7 +195,7 @@ export class Board {
 
     const newTetromino = this.activeBlock.shape.rotateLeft()
 
-    const offsets = [0, 1, -1]
+    const offsets = this.activeBlock.shape.type !== "I" ? [0, 1, -1] : [0]
 
     for (const xOffset of offsets) {
       const newBlock: ActiveBlock = {
@@ -215,7 +218,7 @@ export class Board {
 
     const newTetromino = this.activeBlock.shape.rotateRight()
 
-    const offsets = [0, 1, -1]
+    const offsets = this.activeBlock.shape.type !== "I" ? [0, 1, -1] : [0]
 
     for (const xOffset of offsets) {
       const newBlock: ActiveBlock = {
