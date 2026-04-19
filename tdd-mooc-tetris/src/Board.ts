@@ -188,7 +188,7 @@ export class Board {
   rotateLeft() {
     if (!this.activeBlock) return
 
-    if (this.isCenterColumnBlocked() === true) return
+    if (this.isCenterColumnBlocked()) return
 
     const newTetromino = this.activeBlock.shape.rotateLeft()
 

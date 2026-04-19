@@ -249,5 +249,26 @@ describe("falling rotating tetrominoes", () => {
          .....I....`
       )
     })
+
+    test("right rotaiton fail when cell at idx 2 is occupied", () => {
+      board.drop(Tetromino.I_SHAPE)
+      board.moveDown()
+      board.rotateRight()
+      fallToBottom(board)
+
+      board.drop(Tetromino.L_SHAPE)
+      board.moveRight()
+      board.moveDown()
+      board.rotateRight()
+
+      expect(board.toString()).to.equalShape(
+        `..........
+          ....LLL...
+          ....LI....
+          .....I....
+          .....I....
+          .....I....`
+      )
+    })
   })
 })
