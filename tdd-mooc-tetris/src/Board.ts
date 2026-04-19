@@ -60,7 +60,15 @@ export class Board {
   }
 
   private clearLines() {
-    return
+    const remaining = this.grid.filter(row => row.some(x => x === "."))
+    const count = this.height - remaining.length
+
+    const emptyRows = Array.from(
+      { length: count },
+      () => Array(this.width).fill(".")
+    )
+
+    this.grid = [...emptyRows, ...remaining]
   }
 
   private placeBlock() {

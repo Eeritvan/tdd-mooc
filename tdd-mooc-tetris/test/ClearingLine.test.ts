@@ -45,4 +45,35 @@ describe("Clearing lines", () => {
        ........`
     )
   })
+
+  test("gravity works when clearing lines", () => {
+    board.drop(Tetromino.T_SHAPE)
+    board.moveDown()
+    board.rotateRight()
+    board.rotateRight()
+    moveToLeftWall(board)
+    fallToBottom(board)
+
+    board.drop(Tetromino.T_SHAPE)
+    board.moveDown()
+    board.moveRight()
+    board.rotateRight()
+    board.rotateRight()
+    fallToBottom(board)
+
+    board.drop(Tetromino.L_SHAPE)
+    board.moveDown()
+    board.rotateRight()
+    moveToRightWall(board)
+    fallToBottom(board)
+
+    expect(board.toString()).to.equalShape(
+      `........
+       ........
+       ........
+       ........
+       ......L.
+       .T..T.L.`
+    )
+  })
 })
