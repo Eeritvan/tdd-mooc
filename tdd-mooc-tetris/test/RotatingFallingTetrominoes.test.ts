@@ -228,7 +228,7 @@ describe("falling rotating tetrominoes", () => {
   })
 
   describe("center column rules", () => {
-    test("left rotation fails when cell at idx 2 is occupied", () => {
+    test("left rotation fails when cell at idx 8 is occupied", () => {
       board.drop(Tetromino.I_SHAPE)
       board.moveDown()
       board.rotateRight()
@@ -249,7 +249,7 @@ describe("falling rotating tetrominoes", () => {
       )
     })
 
-    test("right rotation fails when cell at idx 2 is occupied", () => {
+    test("right rotation fails when cell at idx 8 is occupied", () => {
       board.drop(Tetromino.I_SHAPE)
       board.moveDown()
       board.rotateRight()
@@ -262,11 +262,11 @@ describe("falling rotating tetrominoes", () => {
 
       expect(board.toString()).to.equalShape(
         `..........
-          ....LLL...
-          ....LI....
-          .....I....
-          .....I....
-          .....I....`
+         ....LLL...
+         ....LI....
+         .....I....
+         .....I....
+         .....I....`
       )
     })
   })

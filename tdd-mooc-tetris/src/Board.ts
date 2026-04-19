@@ -50,7 +50,7 @@ export class Board {
     const isTopEmpty = grid[0].some(x => x !== ".")
     const newY = isTopEmpty ? 0 : -1
 
-    const middle = Math.floor((this.width - size) / 2);
+    const middle = Math.floor((this.width - size) / 2)
     this.activeBlock = {
       position: { x: middle, y: newY },
       width: size,
@@ -109,7 +109,7 @@ export class Board {
   tick() {
     if (!this.activeBlock) return
 
-    const { position: { x: baseX, y: baseY } } = this.activeBlock;
+    const { position: { x: baseX, y: baseY } } = this.activeBlock
     const newBlock: ActiveBlock = { ...this.activeBlock, position: { x: baseX, y: baseY + 1 } }
 
     if (!this.checkCollisions(newBlock)) {

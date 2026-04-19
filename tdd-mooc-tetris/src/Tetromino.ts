@@ -212,7 +212,7 @@ export class Tetromino {
   }
 
   getGrid() {
-    const rotations = ((this.orientationIndex % 4) + 4) % 4;
+    const rotations = ((this.orientationIndex % 4) + 4) % 4
     return this.orientations[rotations]
   }
 }
