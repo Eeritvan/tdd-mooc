@@ -45,4 +45,14 @@ describe("scoring", () => {
     scoring.clearLine(4)
     expect(scoring.level).to.equal(ogLevel + 2)
   })
+
+  test("score sums up correctly", () => {
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    expect(scoring.score).to.equal(2400)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    expect(scoring.score).to.equal(8400)
+  })
 })
