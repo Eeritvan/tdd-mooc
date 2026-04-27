@@ -12,4 +12,19 @@ describe("scoring", () => {
     scoring.clearLine(1)
     expect(scoring.score).to.equal(40)
   })
+
+  test("clearing 2 line rewards 100 points", () => {
+    scoring.clearLine(2)
+    expect(scoring.score).to.equal(100)
+  })
+
+  test("clearing 3 line rewards 300 points", () => {
+    scoring.clearLine(3)
+    expect(scoring.score).to.equal(300)
+  })
+
+  test("clearing 4 line rewards 1200 points", () => {
+    scoring.clearLine(4)
+    expect(scoring.score).to.equal(1200)
+  })
 })
