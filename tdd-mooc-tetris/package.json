@@ -31,6 +31,7 @@
   },
   "scripts": {
     "start": "http-server src -o / -c-1",
+    "dev": "vite dev",
     "test": "vitest run",
     "autotest": "vitest watch",
     "format": "prettier --write .",

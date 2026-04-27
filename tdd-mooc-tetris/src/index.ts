@@ -1,5 +1,5 @@
 import { Board } from "./Board.ts";
-import { ScoringSystem } from "./ScoringSystem.ts";
+import { Scoring } from "./Scoring.ts";
 import { ShuffleBag } from "./ShuffleBag.ts";
 import { Tetromino } from "./Tetromino.ts";
 
@@ -10,8 +10,8 @@ interface GameProps {
   rows: number;
   tickDuration: number;
   nextTick: number;
-  scoring?: any;
-  board?: Board;
+  scoring: Scoring;
+  board: Board;
   tetrominoes: any;
 }
 
@@ -23,22 +23,36 @@ function initGame() {
     rows: 20,
     tickDuration: 1000,
     nextTick: 0,
+    scoring: new Scoring(),
+    board: new Board(10, 20),
+    tetrominoes: new ShuffleBag([
+      Tetromino.I_SHAPE,
+      Tetromino.T_SHAPE,
+      Tetromino.L_SHAPE,
+      Tetromino.J_SHAPE,
+      Tetromino.T_SHAPE,
+      Tetromino.S_SHAPE,
+      Tetromino.Z_SHAPE,
+      Tetromino.O_SHAPE,
+    ]),
   };
-  game.scoring = new ScoringSystem();
-  game.board = new Board(game.columns, game.rows);
-  game.board.onClearLine = (lineCount: number) => {
-    game.scoring.linesCleared(lineCount);
-  };
-  game.tetrominoes = new ShuffleBag([
-    Tetromino.I_SHAPE,
-    Tetromino.T_SHAPE,
-    Tetromino.L_SHAPE,
-    Tetromino.J_SHAPE,
-    Tetromino.T_SHAPE,
-    Tetromino.S_SHAPE,
-    Tetromino.Z_SHAPE,
-    Tetromino.O_SHAPE,
-  ]);
+  // game.scoring = new ScoringSystem();
+  // game.board = new Board(game.columns, game.rows);
+  game.board.subscribe(game.scoring)
+
+  // game.board.onClearLine = (lineCount: number) => {
+  //   game.scoring.linesCleared(lineCount);
+  // };
+  // game.tetrominoes = new ShuffleBag([
+  //   Tetromino.I_SHAPE,
+  //   Tetromino.T_SHAPE,
+  //   Tetromino.L_SHAPE,
+  //   Tetromino.J_SHAPE,
+  //   Tetromino.T_SHAPE,
+  //   Tetromino.S_SHAPE,
+  //   Tetromino.Z_SHAPE,
+  //   Tetromino.O_SHAPE,
+  // ]);
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "Space") {

@@ -260,4 +260,32 @@ export class Board {
       }
     }
   }
+
+  cellAt(row: number, column: number) {
+    if (this.activeBlock) {
+      const {
+        position: { x: baseX, y: baseY },
+        width,
+        height,
+        shape,
+      } = this.activeBlock
+
+      const localRow = row - baseY
+      const localCol = column - baseX
+
+      if (
+        localRow >= 0 &&
+        localRow < height &&
+        localCol >= 0 &&
+        localCol < width
+      ) {
+        const activeCell = shape.getGrid()[localRow][localCol]
+        if (activeCell !== ".") {
+          return activeCell
+        }
+      }
+    }
+
+    return this.grid[row][column]
+  }
 }
