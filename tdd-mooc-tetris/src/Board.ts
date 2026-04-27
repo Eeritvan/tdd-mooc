@@ -25,6 +25,12 @@ export class Board {
     this.subs.push(sub)
   }
 
+  private notifyLineClear(lines: number) {
+    for (const sub of this.subs) {
+      sub.clearLine(lines)
+    }
+  }
+
   toString() {
     const display = this.grid.map(row => row.slice())
 
@@ -74,9 +80,7 @@ export class Board {
       () => Array(this.width).fill(".")
     )
 
-    for (const sub of this.subs) {
-      sub.clearLine(count)
-    }
+    this.notifyLineClear(count)
 
     this.grid = [...emptyRows, ...remaining]
   }
