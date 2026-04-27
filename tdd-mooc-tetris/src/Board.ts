@@ -1,3 +1,4 @@
+import { Scoring } from "./Scoring"
 import { Tetromino } from "./Tetromino"
 
 interface ActiveBlock {
@@ -12,11 +13,16 @@ export class Board {
   private height: number
   private activeBlock: ActiveBlock | null = null
   private grid: string[][]
+  private subs: Scoring[] = []
 
   constructor(width: number, height: number) {
     this.width = width
     this.height = height
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."))
+  }
+
+  subscribe(sub: Scoring) {
+    this.subs.push(sub)
   }
 
   toString() {
@@ -67,6 +73,10 @@ export class Board {
       { length: count },
       () => Array(this.width).fill(".")
     )
+
+    for (const sub of this.subs) {
+      sub.clearLine(count)
+    }
 
     this.grid = [...emptyRows, ...remaining]
   }
