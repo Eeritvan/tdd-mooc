@@ -10,6 +10,6 @@ describe("scoring", () => {
 
   test("clearing 1 line rewards 40 points", () => {
     scoring.clearLine(1)
-    expect(scoring.score).to.equalShape(40)
+    expect(scoring.score).to.equal(40)
   })
 })
