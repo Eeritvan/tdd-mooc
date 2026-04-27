@@ -2,7 +2,7 @@ import { Tetromino } from "./Tetromino"
 
 export class ShuffleBag {
   private items: Tetromino[]
-  private currentPosition = 0
+  private currentPosition = -1
 
   constructor(items: Tetromino[] = []) {
     this.items = items
@@ -23,7 +23,9 @@ export class ShuffleBag {
     return currentItem
   }
 
-  add(item: Tetromino) {
-    this.items.push(item)
+  add(item: Tetromino, amount: number) {
+    for (let i = 0; i < amount; i++)
+      this.items.push(item);
+    this.currentPosition = this.items.length - 1;
   }
 }
