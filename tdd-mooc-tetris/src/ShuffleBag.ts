@@ -23,9 +23,10 @@ export class ShuffleBag {
     return currentItem
   }
 
-  add(item: Tetromino, amount: number) {
-    for (let i = 0; i < amount; i++)
+  add(item: Tetromino, amount = 1) {
+    for (let i = 0; i < amount; i++) {
       this.items.push(item);
+    }
     this.currentPosition = this.items.length - 1;
   }
 }
