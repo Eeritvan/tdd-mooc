@@ -19,7 +19,7 @@ describe("shuffle bag with all tetromies", () => {
     shuffleBag = new ShuffleBag(items)
   })
 
-  test("returns some tetromino", () => {
+  test("returns a tetromino", () => {
     const item = shuffleBag.next()
 
     expect(items).to.include(item);

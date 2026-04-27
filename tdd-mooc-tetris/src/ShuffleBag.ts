@@ -3,11 +3,15 @@ import { Tetromino } from "./Tetromino"
 export class ShuffleBag {
   private items: Tetromino[]
 
-  constructor(items: Tetromino[]) {
+  constructor(items: Tetromino[] = []) {
     this.items = items
   }
 
-  next() {}
+  next() {
+    return this.items[0]
+  }
 
-  add() {}
+  add(item: Tetromino) {
+    this.items.push(item)
+  }
 }
