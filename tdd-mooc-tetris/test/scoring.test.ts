@@ -27,4 +27,22 @@ describe("scoring", () => {
     scoring.clearLine(4)
     expect(scoring.score).to.equal(1200)
   })
+
+  test("clearing 10 lines increases the level by one", () => {
+    const ogLevel = scoring.level
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    expect(scoring.level).to.equal(ogLevel + 1)
+  })
+
+  test("clearing 20 lines increases the level by 2", () => {
+    const ogLevel = scoring.level
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    scoring.clearLine(4)
+    expect(scoring.level).to.equal(ogLevel + 2)
+  })
 })

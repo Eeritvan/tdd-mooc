@@ -1,6 +1,7 @@
 export class Scoring {
-  private level = 0
+  level = 0
   score = 0
+  private clears = 0
 
   clearLine(lines: number) {
     switch (lines) {
@@ -17,5 +18,7 @@ export class Scoring {
         this.score += 1200 * (this.level + 1)
         break
     }
+    this.clears += lines
+    this.level = Math.floor(this.clears / 10)
   }
 }
