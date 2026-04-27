@@ -1,11 +1,6 @@
 export class Scoring {
-  private level: number
-  score: number
-
-  constructor() {
-    this.score = 0
-    this.level = 0
-  }
+  private level = 0
+  score = 0
 
   clearLine(lines: number) {
     switch (lines) {
