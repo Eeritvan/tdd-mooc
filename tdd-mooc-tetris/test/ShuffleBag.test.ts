@@ -1,6 +1,7 @@
 import { beforeEach, describe, test } from "vitest"
 import { Tetromino } from "../src/Tetromino"
 import { expect } from "chai"
+import { ShuffleBag } from "../src/ShuffleBag"
 
 describe("shuffle bag with all tetromies", () => {
   let shuffleBag: ShuffleBag
