@@ -1,3 +1,5 @@
+// challenge: randomness
+
 function diceRoll() {
   const min = 1;
   const max = 6;
