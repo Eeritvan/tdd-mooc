@@ -1,8 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { parse } from "csv-parse/sync";
 
-export async function parsePeopleCsv(filePath) {
+export async function readCSV(filePath) {
   const csvData = await readFile(filePath, { encoding: "utf8" });
+  return csvData
+}
+
+export function processData(csvData) {
   const records = parse(csvData, {
     skip_empty_lines: true,
     trim: true,
@@ -18,4 +22,10 @@ export async function parsePeopleCsv(filePath) {
     }
     return person;
   });
+}
+
+export async function parsePeopleCsv(filePath) {
+  const csvData = await readCSV(filePath)
+  const result = processData(csvData)
+  return result
 }
